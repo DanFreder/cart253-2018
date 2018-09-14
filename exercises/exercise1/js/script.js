@@ -1,10 +1,11 @@
 // Exercise 1 - Moving pictures
-// Pippin Barr
+// Pippin Barr - Edited by Dan Freder
 //
 // Starter code for exercise 1.
 // It moves two pictures around on the canvas.
 // One moves linearly down the screen.
 // One moves toward the mouse cursor.
+// Dan added one that moves left to right.
 
 
 // The image of a clown face
@@ -19,6 +20,12 @@ var feltTextureImage;
 var feltTextureImageX;
 var feltTextureImageY;
 
+// The Glitchy Image Dan added
+var glitchImage;
+// The position of the Glitchy Image
+var glitchImageX;
+var glitchImageY;
+
 
 // preload()
 //
@@ -27,6 +34,7 @@ var feltTextureImageY;
 function preload() {
   clownImage = loadImage("assets/images/clown.png");
   feltTextureImage = loadImage("assets/images/black-felt-texture.png");
+  glitchImage = loadImage("assets/images/Glitchy.png");
 }
 
 
@@ -46,6 +54,10 @@ function setup() {
   feltTextureImageX = width/2;
   feltTextureImageY = 0 - feltTextureImage.height/2;
 
+  // Start the Glitchy image at the left of the canvas
+  glitchImageX = width-1;
+  glitchImageY = height;
+
   // We'll use imageMode CENTER for this script
   imageMode(CENTER);
 }
@@ -63,6 +75,12 @@ function draw() {
 
   // Display the felt image
   image(feltTextureImage,feltTextureImageX,feltTextureImageY);
+
+  // Move the Glitch image right by increasing its x position
+  glitchImageX += 1;
+
+  // Display the Glitch image
+  image(glitchImage,glitchImageX,glitchImageY);
 
   // Move the clown by moving it 1/10th of its current distance from the mouse
 
