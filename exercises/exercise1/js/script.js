@@ -5,7 +5,8 @@
 // It moves two pictures around on the canvas.
 // One moves linearly down the screen.
 // One moves toward the mouse cursor.
-// Dan added one that moves left to right.
+// Dan added one that moves left to right
+// Dan added another that follows the mouse
 
 
 // The image of a clown face
@@ -26,6 +27,11 @@ var glitchImage;
 var glitchImageX;
 var glitchImageY;
 
+// The msp Image Dan added
+var mspImage;
+// The position of the msp Image
+var mspImageX;
+var mspImageY;
 
 // preload()
 //
@@ -35,6 +41,7 @@ function preload() {
   clownImage = loadImage("assets/images/clown.png");
   feltTextureImage = loadImage("assets/images/black-felt-texture.png");
   glitchImage = loadImage("assets/images/Glitchy.png");
+  mspImage = loadImage("assets/images/msp.png");
 }
 
 
@@ -57,6 +64,10 @@ function setup() {
   // Start the Glitchy image at the left of the canvas
   glitchImageX = width-1;
   glitchImageY = height;
+
+  // Start the msp image at the centre of the canvas
+  mspImageX = width/2;
+  mspImageY = height/2;
 
   // We'll use imageMode CENTER for this script
   imageMode(CENTER);
@@ -93,4 +104,7 @@ function draw() {
 
   // Display the clown image
   image(clownImage,clownImageX,clownImageY);
+
+  // Move mspImage according to the mouse position
+  image(mspImage,mouseX,mouseY);
 }
