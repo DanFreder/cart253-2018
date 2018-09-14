@@ -33,6 +33,12 @@ var mspImage;
 var mspImageX;
 var mspImageY;
 
+// The tahoe Image Dan added
+var tahoeImage;
+// The position of the tahoe Image
+var tahoeImageX;
+var tahoeImageY;
+
 // preload()
 //
 // Load the two images we're using before the program starts
@@ -42,6 +48,7 @@ function preload() {
   feltTextureImage = loadImage("assets/images/black-felt-texture.png");
   glitchImage = loadImage("assets/images/Glitchy.png");
   mspImage = loadImage("assets/images/msp.png");
+  tahoeImage = loadImage("assets/images/tahoe.png");
 }
 
 
@@ -56,6 +63,10 @@ function setup() {
   // Start the clown image at the centre of the canvas
   clownImageX = width/2;
   clownImageY = height/2;
+
+  // Start the tahoe image at the centre of the canvas
+  tahoeImageX = width/2;
+  tahoeImageY = height/2;
 
   // Start the felt image perfectly off screen above the canvas
   feltTextureImageX = width/2;
@@ -81,14 +92,9 @@ function setup() {
 
 function draw() {
 
-  // Move the felt image down by increasing its y position
-  feltTextureImageY += 1;
-
-  // Display the felt image
-  image(feltTextureImage,feltTextureImageX,feltTextureImageY);
-
   // Move the Glitch image right by increasing its x position
-  glitchImageX += 1;
+  glitchImageY=0;
+  glitchImageX += .25;
 
   // Display the Glitch image
   image(glitchImage,glitchImageX,glitchImageY);
@@ -107,4 +113,14 @@ function draw() {
 
   // Move mspImage according to the mouse position
   image(mspImage,mouseX,mouseY);
+
+  // Move tahoeImage according to the mouse position
+  image(tahoeImage,mouseX*(clownImageX/100),mouseY*(clownImageY/100));
+
+  // Move the felt image down by increasing its y position
+  feltTextureImageY += 1;
+
+  // Display the felt image
+  image(feltTextureImage,feltTextureImageX,feltTextureImageY);
+
 }
