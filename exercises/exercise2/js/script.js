@@ -7,6 +7,9 @@ Starter code for exercise 2.
 
 *********************************************************/
 
+// Dan's Score Text
+var scoreText;
+
 // The position and size of our avatar circle
 var avatarX;
 var avatarY;
@@ -151,5 +154,11 @@ function draw() {
   fill(255,0,0);
   // Draw the enemy as a circle
   ellipse(enemyX,enemyY,enemySize,enemySize);
+
+  // Update Score
+  textAlign(RIGHT, BOTTOM);
+  textSize(72);
+  var scoreText = dodges;
+  text(scoreText, 475, 475);
 
 }
