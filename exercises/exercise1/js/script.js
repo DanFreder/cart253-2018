@@ -39,6 +39,12 @@ var tahoeImage;
 var tahoeImageX;
 var tahoeImageY;
 
+// The Green Glitch Image Dan added
+var greenGlitchImage;
+// The position of the greenGlitchImage
+var greenGlitchImageX;
+var greenGlitchImageY;
+
 // preload()
 //
 // Load the two images we're using before the program starts
@@ -49,6 +55,7 @@ function preload() {
   glitchImage = loadImage("assets/images/Glitchy.png");
   mspImage = loadImage("assets/images/msp.png");
   tahoeImage = loadImage("assets/images/tahoe.png");
+  greenGlitchImage = loadImage("assets/images/greenglitch.png");
 }
 
 
@@ -64,6 +71,10 @@ function setup() {
   clownImageX = width/2;
   clownImageY = height/2;
 
+  // Start the greenglitch image off with ramps
+  greenGlitchImageX = sin(30);
+  greenGlitchImageY = sin(45);
+
   // Start the tahoe image at the centre of the canvas
   tahoeImageX = width/2;
   tahoeImageY = height/2;
@@ -73,8 +84,8 @@ function setup() {
   feltTextureImageY = 0 - feltTextureImage.height/2;
 
   // Start the Glitchy image at the left of the canvas
-  glitchImageX = width-1;
-  glitchImageY = height;
+  glitchImageX = width-320;
+  glitchImageY = height/2;
 
   // Start the msp image at the centre of the canvas
   mspImageX = width/2;
@@ -114,13 +125,16 @@ function draw() {
   // Move mspImage according to the mouse position
   image(mspImage,mouseX,mouseY);
 
-  // Move tahoeImage according to the mouse position
-  image(tahoeImage,mouseX*(clownImageX/100),mouseY*(clownImageY/100));
+  // Move tahoeImage according to the mouse position in relation to ClownImage
+  image(tahoeImage,mouseX*(clownImageX/50),mouseY*(clownImageY/50));
 
   // Move the felt image down by increasing its y position
   feltTextureImageY += 1;
 
   // Display the felt image
   image(feltTextureImage,feltTextureImageX,feltTextureImageY);
+
+  // Display the greenglitch image
+  image(greenGlitchImage,(greenGlitchImageX),greenGlitchImageY);
 
 }
