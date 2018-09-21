@@ -10,6 +10,11 @@ Starter code for exercise 2.
 // Dan's Score Text
 var scoreText;
 
+// Dan's background Colour
+var backColourRed = 1;
+var backColourGreen = 1;
+var backColourBlue = 1;
+
 // The position and size of our avatar circle
 var avatarX;
 var avatarY;
@@ -60,8 +65,11 @@ function setup() {
 // Handle moving the avatar and enemy and checking for dodges and
 // game over situations.
 function draw() {
-  // A pink background
-  background(255,220,220);
+  // A Shifting Background
+  background(backColourRed, backColourBlue, backColourGreen);
+  backColourRed = randomGaussian(149,3);
+  backColourGreen = randomGaussian(178,3);
+  backColourBlue = randomGaussian(184,3);
 
   // Default the avatar's velocity to 0 in case no key is pressed this frame
   avatarVX = 0;
@@ -145,15 +153,15 @@ function draw() {
   // Display the current number of successful in the console
   console.log(dodges);
 
-  // The player is black
-  fill(0);
-  // Draw the player as a circle
-  ellipse(avatarX,avatarY,avatarSize,avatarSize);
+  // The player is greenish
+  fill(48,115,81);
+  // Draw the player as a square
+  rect(avatarX,avatarY,avatarSize,avatarSize,10);
 
-  // The enemy is red
-  fill(255,0,0);
-  // Draw the enemy as a circle
-  ellipse(enemyX,enemyY,enemySize,enemySize);
+  // The enemy is reddish
+  fill(112,22,60);
+  // Draw the enemy as a square
+  rect(enemyX,enemyY,enemySize,enemySize,20);
 
   // Update Score
   textAlign(RIGHT, BOTTOM);
