@@ -14,9 +14,12 @@ var scoreText;
 var starImage;
 
 // Dan's background Colour
-var backColourRed = 1;
-var backColourGreen = 1;
-var backColourBlue = 1;
+var backColourRed = 218;
+var backColourGreen = 44;
+var backColourBlue = 56;
+var randomRed = 10
+var randomGreen = 10
+var randomBlue = 10
 
 // The position and size of our avatar circle
 var avatarX;
@@ -29,6 +32,7 @@ var avatarVX = 0;
 var avatarVY = 0;
 
 // The position and size of the enemy circle
+// Dan added enemy size increase
 var enemyX;
 var enemyY;
 var enemySize = 50;
@@ -73,10 +77,7 @@ function setup() {
 // game over situations.
 function draw() {
   // A Shifting Background
-  background(backColourRed, backColourBlue, backColourGreen);
-  backColourRed = randomGaussian(255, 10);
-  backColourGreen = random(255);
-  backColourBlue = randomGaussian(255, 30);
+  background(244, 240, 187);
 
   // Default the avatar's velocity to 0 in case no key is pressed this frame
   avatarVX = 0;
@@ -157,11 +158,37 @@ function draw() {
     enemySize = enemySize + enemySizeIncrease;
   }
 
+//Change background colour based on number of dodges
+  if (dodges === 1)
+    {background(244, 240, 187);}
+  if (dodges === 2)
+    {background(67, 41, 31);}
+  if (dodges === 3)
+    {background(135, 195, 143);}
+
+//Scale up background strobing
+  if (dodges >= 4)
+    {randomRed = randomGaussian(255, 100);
+    randomGreen = randomGaussian(255, 100);
+    randomBlue = randomGaussian(255, 100);
+    background(randomRed, randomGreen, randomBlue);}
+  if (dodges >= 6)
+    {randomRed = randomGaussian(255, 200);
+    randomGreen = randomGaussian(255, 200);
+    randomBlue = randomGaussian(255, 200);
+    background(randomRed, randomGreen, randomBlue);}
+  if (dodges >= 8) {
+    randomRed = random(255);
+    randomGreen = random(255);
+    randomBlue = random(255);
+    background(randomRed, randomGreen, randomBlue);
+  }
+
   // Display the current number of successful in the console
   console.log(dodges);
 
-  // The player is greenish
-  fill(48,115,81);
+  // The player is Red
+  fill(218,44,56);
   // Draw the player as a square
   rect(avatarX,avatarY,avatarSize,avatarSize,20,20,20,20);
 
