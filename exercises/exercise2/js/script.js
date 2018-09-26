@@ -157,6 +157,13 @@ function draw() {
     // Increase the enemy's speed and size to make the game harder
     enemySpeed = enemySpeed + enemySpeedIncrease;
     enemySize = enemySize + enemySizeIncrease;
+    //Change Player size based on # of dodges
+    if (dodges >= 1)
+  {    avatarSize = random(20)+10; }
+  if (dodges >= 4)
+{    avatarSize = random(40)+8; }
+if (dodges >= 8)
+{    avatarSize = random(60)+5; }
   }
 
 
