@@ -50,6 +50,7 @@ var dodges = 0;
 
 function preload() {
   starImage = loadImage("assets/images/starImage.png");
+  shfiftyImage = loadImage("assets/images/shfifty.png");
 }
 
 // setup()
@@ -76,7 +77,7 @@ function setup() {
 // Handle moving the avatar and enemy and checking for dodges and
 // game over situations.
 function draw() {
-  // A Shifting Background
+  // Initial Background
   background(244, 240, 187);
 
   // Default the avatar's velocity to 0 in case no key is pressed this frame
@@ -158,6 +159,7 @@ function draw() {
     enemySize = enemySize + enemySizeIncrease;
   }
 
+
 //Change background colour based on number of dodges
   if (dodges === 1)
     {background(244, 240, 187);}
@@ -182,6 +184,7 @@ function draw() {
     randomGreen = random(255);
     randomBlue = random(255);
     background(randomRed, randomGreen, randomBlue);
+    image(shfiftyImage,enemyX,enemyY);
   }
 
   // Display the current number of successful in the console
@@ -191,10 +194,8 @@ function draw() {
   fill(218,44,56);
   // Draw the player as a square
   rect(avatarX,avatarY,avatarSize,avatarSize,20,20,20,20);
-
   // Draw the enemy as the star
-  // Move starImage as Enemy
-  image(starImage,enemyX,enemyY);
+    image(starImage,enemyX,enemyY);
 
 
   // Update Score
