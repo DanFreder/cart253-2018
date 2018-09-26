@@ -17,9 +17,9 @@ var starImage;
 var backColourRed = 218;
 var backColourGreen = 44;
 var backColourBlue = 56;
-var randomRed = 10
-var randomGreen = 10
-var randomBlue = 10
+var randomRed = 10;
+var randomGreen = 10;
+var randomBlue = 10;
 
 // The position and size of our avatar circle
 var avatarX;
@@ -158,13 +158,13 @@ function draw() {
     enemySpeed = enemySpeed + enemySpeedIncrease;
     enemySize = enemySize + enemySizeIncrease;
     //Change Player size based on # of dodges
-    if (dodges >= 1)
-  {    avatarSize = random(20)+10; }
+  if (dodges >= 1)
+  {avatarSize = random(20)+10; }
   if (dodges >= 4)
-{    avatarSize = random(40)+8; }
-if (dodges >= 8)
-{    avatarSize = random(60)+5; }
-  }
+  {avatarSize = random(40)+8; }
+  if (dodges >= 8)
+  {avatarSize = random(60)+5; }
+}
 
 
 //Change background colour based on number of dodges
