@@ -10,6 +10,9 @@ Starter code for exercise 2.
 // Dan's Score Text
 var scoreText;
 
+//Dan's starImage
+var starImage;
+
 // Dan's background Colour
 var backColourRed = 1;
 var backColourGreen = 1;
@@ -41,6 +44,10 @@ var enemySpeedIncrease = 0.5;
 // How many dodges the player has made
 var dodges = 0;
 
+function preload() {
+  starImage = loadImage("assets/images/starImage.png");
+}
+
 // setup()
 //
 // Make the canvas, position the avatar and anemy
@@ -67,9 +74,9 @@ function setup() {
 function draw() {
   // A Shifting Background
   background(backColourRed, backColourBlue, backColourGreen);
-  backColourRed = randomGaussian(149,3);
-  backColourGreen = randomGaussian(178,3);
-  backColourBlue = randomGaussian(184,3);
+  backColourRed = randomGaussian(255, 10);
+  backColourGreen = random(255);
+  backColourBlue = randomGaussian(255, 30);
 
   // Default the avatar's velocity to 0 in case no key is pressed this frame
   avatarVX = 0;
@@ -156,12 +163,12 @@ function draw() {
   // The player is greenish
   fill(48,115,81);
   // Draw the player as a square
-  rect(avatarX,avatarY,avatarSize,avatarSize,10);
+  rect(avatarX,avatarY,avatarSize,avatarSize,20,20,20,20);
 
-  // The enemy is reddish
-  fill(112,22,60);
-  // Draw the enemy as a square
-  rect(enemyX,enemyY,enemySize,enemySize,20);
+  // Draw the enemy as the star
+  // Move starImage as Enemy
+  image(starImage,enemyX,enemyY);
+
 
   // Update Score
   textAlign(RIGHT, BOTTOM);
