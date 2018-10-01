@@ -112,11 +112,21 @@ function setup() {
   image(targetImage,targetX,targetY);
 
 rectMode(CENTER);
+noStroke();
 fill(100,200,30,200);
 rect(width-100,height-500,150,150,50,50);
 
   //display sausageDog example in the rectangle
   image(sausageExample,width-100,height-500);
+
+  //display text under sausageDog example
+  textFont("Futura");
+  textSize(10);
+  textAlign(CENTER,CENTER);
+  noStroke();
+  fill(0);
+  // Tell them they won!
+  text("ceci n'est pas sausage dog",width-100,height-550);
 }
 
 function draw() {
