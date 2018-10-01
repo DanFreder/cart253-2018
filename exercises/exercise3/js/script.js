@@ -14,6 +14,7 @@ https://creativenerds.co.uk/freebies/80-free-wildlife-icons-the-best-ever-animal
 var targetX;
 var targetY;
 var targetImage;
+var sausageExample;
 
 // The ten decoy images
 var decoyImage1;
@@ -39,6 +40,7 @@ var gameOver = false;
 // Loads the target and decoy images before the program starts
 function preload() {
   targetImage = loadImage("assets/images/animals-target.png");
+  sausageExample = loadImage("assets/images/animals-target.png");
 
   decoyImage1 = loadImage("assets/images/animals-01.png");
   decoyImage2 = loadImage("assets/images/animals-02.png");
@@ -108,6 +110,13 @@ function setup() {
   targetY = random(0,height);
   // And draw it (this means it will always be on top)
   image(targetImage,targetX,targetY);
+
+rectMode(CENTER);
+fill(100,200,30,200);
+rect(width-100,height-500,150,150,50,50);
+
+  //display sausageDog example in the rectangle
+  image(sausageExample,width-100,height-500);
 }
 
 function draw() {
