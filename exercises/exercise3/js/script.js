@@ -106,10 +106,18 @@ function setup() {
   }
 
   // Once we've displayed all decoys, we choose a location for the target
-  targetX = random(0,width);
-  targetY = random(0,height);
+
+targetX = random(0,width);
+targetY = random(0,height);
+
+if((targetX >= width-100) || (targetY <= height-500)) {
   // And draw it (this means it will always be on top)
   image(targetImage,targetX,targetY);
+}
+else {
+targetX + 100;
+image(targetImage,targetX,targetY);
+}
 
 rectMode(CENTER);
 noStroke();
@@ -117,7 +125,7 @@ fill(100,200,30,200);
 rect(width-100,height-500,150,150,50,50);
 
   //display sausageDog example in the rectangle
-  image(sausageExample,width-100,height-500);
+image(sausageExample,width-100,height-500);
 
   //display text under sausageDog example
   textFont("Futura");
