@@ -1,7 +1,7 @@
 /******************************************************
 
 Game - Chaser
-Pippin Barr
+Pippin Barr - modified by Dan Freder
 
 A simple game of cat and mouse.
 
@@ -38,6 +38,9 @@ var preyHealth;
 var preyMaxHealth = 100;
 // Prey fill color
 var preyFill = 200;
+//prey tx for noise function
+var tx = 10;
+var ty = 10;
 
 // Amount of health obtained per frame of "eating" the prey
 var eatHealth = 10;
@@ -65,6 +68,8 @@ function setupPrey() {
   preyVX = -preyMaxSpeed;
   preyVY = preyMaxSpeed;
   preyHealth = preyMaxHealth;
+  tx = random(0,1000);
+  ty = random(0,1000);
 }
 
 // setupPlayer()
@@ -107,6 +112,13 @@ function draw() {
 //
 // Checks arrow keys and adjusts player velocity accordingly
 function handleInput() {
+  //SHIFT key Speed burst
+  if(keyIsDown(SHIFT)) {
+    playerMaxSpeed = 10;
+  }
+  else {
+    playerMaxSpeed = 2;
+  }
   // Check for horizontal movement
   if (keyIsDown(LEFT_ARROW)) {
     playerVX = -playerMaxSpeed;
@@ -199,22 +211,13 @@ function checkEating() {
 //
 // Moves the prey based on random velocity changes
 function movePrey() {
-  // Change the prey's velocity at random intervals
-  // random() will be < 0.05 5% of the time, so the prey
-  // will change direction on 5% of frames
-  if (random() < 0.05) {
-    // Set velocity based on random values to get a new direction
-    // and speed of movement
-    // Use map() to convert from the 0-1 range of the random() function
-    // to the appropriate range of velocities for the prey
-    preyVX = map(random(),0,1,-preyMaxSpeed,preyMaxSpeed);
-    preyVY = map(random(),0,1,-preyMaxSpeed,preyMaxSpeed);
-  }
-
-  // Update prey position based on velocity
+  preyVX = map(noise(tx),0,1,-preyMaxSpeed,preyMaxSpeed);
+  preyVY = map(noise(ty),0,1,-preyMaxSpeed,preyMaxSpeed);
   preyX += preyVX;
   preyY += preyVY;
-
+  tx += 0.1;
+  ty += 0.01;
+}
   // Screen wrapping
   if (preyX < 0) {
     preyX += width;
@@ -222,14 +225,12 @@ function movePrey() {
   else if (preyX > width) {
     preyX -= width;
   }
-
   if (preyY < 0) {
     preyY += height;
   }
   else if (preyY > height) {
     preyY -= height;
   }
-}
 
 // drawPrey()
 //
@@ -239,8 +240,6 @@ function drawPrey() {
   ellipse(preyX,preyY,preyRadius*2);
 }
 
-// drawPlayer()
-//
 // Draw the player as an ellipse with alpha based on health
 function drawPlayer() {
   fill(playerFill,playerHealth);
