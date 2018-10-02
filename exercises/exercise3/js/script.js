@@ -15,8 +15,12 @@ var targetX;
 var targetY;
 var targetImage;
 var sausageExample;
-var sizeX = 1;
-var sizeY = 1;
+
+// variables for endgame movement
+var endX = targetX;
+var endY = targetY;
+var endVX = 10;
+var endVY = 15;
 
 // The ten decoy images
 var decoyImage1;
@@ -64,6 +68,12 @@ function setup() {
   createCanvas(windowWidth,windowHeight);
   background("#ffff00");
   imageMode(CENTER);
+
+//Physics for ellipse motion endgame
+  endX = 0;
+  endY = height/2;
+  endVX = 100;
+  endVY = 100;
 
   // Use a for loop to draw as many decoys as we need
   for (var i = 0; i < numDecoys; i++) {
@@ -149,11 +159,19 @@ function draw() {
     noStroke();
     fill(random(255));
     // Tell them they won!
-    text("Winner Winner Sausage Dinner!",width/2,height/2);
+    text("Winner Winner Sausage Dinner!",mouseX,mouseY);
     noFill();
-    stroke(random(255));
+    stroke((random(255)),0,(random(255)));
     strokeWeight(10);
     ellipse(targetX,targetY,targetImage.width,targetImage.height);
+    endX = randomGaussian(400,50);
+    endY = randomGaussian(400,25);
+    ellipse(targetX,targetY,endX,endY);
+endX = width * noise(endVX);
+endY = height * noise(endVY);
+endVX += 0.02;
+endVY += 0.03;
+image(sausageExample,endX,endY);
   }
 }
 
