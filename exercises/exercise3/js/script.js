@@ -15,6 +15,8 @@ var targetX;
 var targetY;
 var targetImage;
 var sausageExample;
+var sizeX = 1;
+var sizeY = 1;
 
 // The ten decoy images
 var decoyImage1;
@@ -134,20 +136,20 @@ image(sausageExample,width-100,height-500);
   noStroke();
   fill(0);
   // Tell them they won!
-  text("ceci n'est pas sausage dog",width-100,height-550);
+  textSize(11);
+  text("ceci n'est pas sausage dog",width-100,height-547);
 }
 
 function draw() {
   if (gameOver) {
     // Prepare our typography
     textFont("Helvetica");
-    textSize(128);
+    textSize(40);
     textAlign(CENTER,CENTER);
     noStroke();
     fill(random(255));
     // Tell them they won!
-    text("YOU WINNED!",width/2,height/2);
-
+    text("Winner Winner Sausage Dinner!",width/2,height/2);
     noFill();
     stroke(random(255));
     strokeWeight(10);
