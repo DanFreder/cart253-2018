@@ -53,9 +53,7 @@ var preyEaten = 0;
 // Sets up the basic elements of the game
 function setup() {
   createCanvas(500,500);
-
   noStroke();
-
   setupPrey();
   setupPlayer();
 }
@@ -220,7 +218,7 @@ function movePrey() {
   preyY += preyVY;
   tx += 0.1;
   ty += 0.01;
-}
+
   // Screen wrapping
   if (preyX < 0) {
     preyX += width;
@@ -234,7 +232,7 @@ function movePrey() {
   else if (preyY > height) {
     preyY -= height;
   }
-
+}
 // drawPrey()
 //
 // Draw the prey as an ellipse with alpha based on health
