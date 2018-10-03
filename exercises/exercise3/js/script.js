@@ -69,11 +69,15 @@ function setup() {
   background("#ffff00");
   imageMode(CENTER);
 
+
 //Physics for ellipse motion endgame
   endX = 0;
   endY = height/2;
   endVX = 100;
   endVY = 100;
+
+//random size generator
+  animalSize = (random(10,100));
 
   // Use a for loop to draw as many decoys as we need
   for (var i = 0; i < numDecoys; i++) {
@@ -86,10 +90,10 @@ function setup() {
     // images, each with a 10% chance of being shown
     // We'll talk more about this nice quality of random soon enough
     if (r < 0.1) {
-      image(decoyImage1,x,y);
+      image(decoyImage1,x,y,animalSize,animalSize);
     }
     else if (r < 0.2) {
-      image(decoyImage2,x,y);
+      image(decoyImage2,x,y,animalSize,animalSize);
     }
     else if (r < 0.3) {
       image(decoyImage3,x,y);
@@ -98,19 +102,19 @@ function setup() {
       image(decoyImage4,x,y);
     }
     else if (r < 0.5) {
-      image(decoyImage5,x,y);
+      image(decoyImage5,x,y,animalSize,animalSize);
     }
     else if (r < 0.6) {
       image(decoyImage6,x,y);
     }
     else if (r < 0.7) {
-      image(decoyImage7,x,y);
+      image(decoyImage7,x,y,animalSize,animalSize);
     }
     else if (r < 0.8) {
       image(decoyImage8,x,y);
     }
     else if (r < 0.9) {
-      image(decoyImage9,x,y);
+      image(decoyImage9,x,y,animalSize,animalSize);
     }
     else if (r < 1.0) {
       image(decoyImage10,x,y);
@@ -118,17 +122,17 @@ function setup() {
   }
 
   // Once we've displayed all decoys, we choose a location for the target
-
 targetX = random(0,width);
 targetY = random(0,height);
 
+  //make sure it's not behind the sausageDog example icon
 if((targetX >= width-100) || (targetY <= height-500)) {
   // And draw it (this means it will always be on top)
   image(targetImage,targetX,targetY);
 }
 else {
 targetX + 100;
-image(targetImage,targetX,targetY);
+image(targetImage,targetX,targetY,animalSize,animalSize);
 }
 
 rectMode(CENTER);

@@ -37,7 +37,8 @@ var preyMaxSpeed = 4;
 var preyHealth;
 var preyMaxHealth = 100;
 // Prey fill color
-var preyFill = 200;
+var preyFill = (255);
+
 //prey tx for noise function
 var tx = 10;
 var ty = 10;
@@ -68,8 +69,10 @@ function setupPrey() {
   preyVX = -preyMaxSpeed;
   preyVY = preyMaxSpeed;
   preyHealth = preyMaxHealth;
-  tx = random(0,1000);
-  ty = random(0,1000);
+
+// do I need this?
+  tx = random(0,width);
+  ty = random(0,height);
 }
 
 // setupPlayer()
@@ -114,10 +117,10 @@ function draw() {
 function handleInput() {
   //SHIFT key Speed burst
   if(keyIsDown(SHIFT)) {
-    playerMaxSpeed = 10;
+    playerMaxSpeed = 8;
   }
-  else {
-    playerMaxSpeed = 2;
+    else {
+      playerMaxSpeed = 4;
   }
   // Check for horizontal movement
   if (keyIsDown(LEFT_ARROW)) {
