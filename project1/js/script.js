@@ -237,6 +237,7 @@ function movePrey() {
 //
 // Draw the prey as an ellipse with alpha based on health
 function drawPrey() {
+  preyRadius = random(15,30);
   fill(preyFill,preyHealth);
   ellipse(preyX,preyY,preyRadius*2);
 }
