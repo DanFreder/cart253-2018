@@ -242,10 +242,10 @@ function drawPrey() {
   ellipse(preyX,preyY,preyRadius*2);
 }
 
-// Draw the player as an ellipse with alpha based on health
+// Draw the player as a triangle with alpha based on health
 function drawPlayer() {
   fill(playerFill,playerHealth);
-  ellipse(playerX,playerY,playerRadius*2);
+  triangle(playerX-playerRadius,playerY+playerRadius,playerX,playerY-playerRadius,playerX+playerRadius,playerY+playerRadius);
 }
 
 // showGameOver()
