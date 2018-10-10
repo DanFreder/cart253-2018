@@ -25,6 +25,7 @@ var playerHealth;
 var playerMaxHealth = 255;
 // Player fill color
 var playerFill = 50;
+var spinVal = 1;
 
 // Prey position, size, velocity
 var preyX;
@@ -204,9 +205,10 @@ function checkEating() {
       preyHealth = preyMaxHealth;
       // Track how many prey were eaten
       preyEaten++;
-      //Increase the player size and make them slower
+      //Increase the player size, make them slower, increase rotation speed
       playerRadius += preyEaten;
       playerRadius = constrain(playerRadius,25,100);
+      spinVal += 1;
     }
   }
 }
@@ -252,7 +254,7 @@ function drawPlayer() {
   push();
   rectMode(CENTER);
   translate(playerX,playerY);
-  rotate(radians(frameCount*75));
+  rotate(radians(frameCount*spinVal));
   fill(playerFill,playerHealth);
   rect(0,0,playerRadius,playerRadius,5,5,5,5);
   pop();
@@ -267,6 +269,6 @@ function showGameOver() {
   fill(0);
   var gameOverText = "GAME OVER\n";
   gameOverText += "You ate " + preyEaten + " innocent circles \n";
-  gameOverText += "before obesity claimed your life";
+  gameOverText += "before dizzying obesity claimed your life";
   text(gameOverText,width/2,height/2);
 }
