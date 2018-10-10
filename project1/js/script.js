@@ -16,7 +16,7 @@ var gameOver = false;
 // Player position, size, velocity
 var playerX;
 var playerY;
-var playerRadius = 25;
+var playerRadius = 30;
 var playerVX = 0;
 var playerVY = 0;
 var playerMaxSpeed = 2;
@@ -77,8 +77,8 @@ function setupPrey() {
 //
 // Initialises player position and health
 function setupPlayer() {
-  playerX = 4*width/5;
-  playerY = height/2;
+  playerX = (4*width/5);
+  playerY = (height/2);
   playerHealth = playerMaxHealth;
 }
 
@@ -242,10 +242,16 @@ function drawPrey() {
   ellipse(preyX,preyY,preyRadius*2);
 }
 
-// Draw the player as a triangle with alpha based on health
+// Draw the player as a rectangle with alpha based on health
 function drawPlayer() {
+  // rotate triangle around it's center one degree each frame
+  push();
+  rectMode(CENTER);
+  translate(playerX,playerY);
+  rotate(radians(frameCount));
   fill(playerFill,playerHealth);
-  triangle(playerX-playerRadius,playerY+playerRadius,playerX,playerY-playerRadius,playerX+playerRadius,playerY+playerRadius);
+  rect(0,0,playerRadius,playerRadius);
+  pop();
 }
 
 // showGameOver()
