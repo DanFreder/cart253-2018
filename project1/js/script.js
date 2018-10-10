@@ -68,9 +68,6 @@ function setupPrey() {
   preyVY = preyMaxSpeed;
   preyHealth = preyMaxHealth;
 
-// do I need this?
-  tx = random(0,width);
-  ty = random(0,height);
 }
 
 // setupPlayer()
@@ -91,6 +88,7 @@ function setupPlayer() {
 // When the game is over, shows the game over screen.
 function draw() {
   background(100,100,200);
+
 
   if (!gameOver) {
     handleInput();
@@ -113,12 +111,14 @@ function draw() {
 //
 // Checks arrow keys and adjusts player velocity accordingly
 function handleInput() {
+  playerMaxSpeed = constrain(playerMaxSpeed,5,12);
+  preyEaten = constrain(preyEaten,0,10);
   //SHIFT key Speed burst
   if(keyIsDown(SHIFT)) {
-    playerMaxSpeed = 8-preyEaten;
+    playerMaxSpeed = 13-preyEaten;
   }
     else {
-      playerMaxSpeed = 4;
+      playerMaxSpeed = 12-preyEaten;
   }
   // Check for horizontal movement
   if (keyIsDown(LEFT_ARROW)) {
@@ -206,9 +206,7 @@ function checkEating() {
       preyEaten++;
       //Increase the player size and make them slower
       playerRadius += preyEaten;
-      playerRadius = constrain(playerRadius,25,70);
-      playerMaxSpeed -= preyEaten;
-      playerMaxSpeed = constrain(playerMaxSpeed,0,8);
+      playerRadius = constrain(playerRadius,25,100);
     }
   }
 }
@@ -254,7 +252,7 @@ function drawPlayer() {
   push();
   rectMode(CENTER);
   translate(playerX,playerY);
-  rotate(radians(frameCount*3));
+  rotate(radians(frameCount*75));
   fill(playerFill,playerHealth);
   rect(0,0,playerRadius,playerRadius,5,5,5,5);
   pop();
@@ -268,7 +266,7 @@ function showGameOver() {
   textAlign(CENTER,CENTER);
   fill(0);
   var gameOverText = "GAME OVER\n";
-  gameOverText += "You murdered " + preyEaten + " innocent circles \n";
+  gameOverText += "You ate " + preyEaten + " innocent circles \n";
   gameOverText += "before obesity claimed your life";
   text(gameOverText,width/2,height/2);
 }
