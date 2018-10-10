@@ -114,9 +114,11 @@ function draw() {
 function handleInput() {
   playerMaxSpeed = constrain(playerMaxSpeed,5,12);
   preyEaten = constrain(preyEaten,0,10);
+  playerHealth = constrain(playerHealth,0,255);
   //SHIFT key Speed burst
   if(keyIsDown(SHIFT)) {
     playerMaxSpeed = 13-preyEaten;
+    playerHealth -= 1;
   }
     else {
       playerMaxSpeed = 12-preyEaten;
@@ -268,7 +270,7 @@ function showGameOver() {
   textAlign(CENTER,CENTER);
   fill(0);
   var gameOverText = "GAME OVER\n";
-  gameOverText += "You ate " + preyEaten + " innocent circles \n";
-  gameOverText += "before dizzying obesity claimed your life";
+  gameOverText += "You ate " + preyEaten + " innocent circles.\n";
+  gameOverText += "You monster.\n";
   text(gameOverText,width/2,height/2);
 }
