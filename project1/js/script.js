@@ -115,7 +115,7 @@ function draw() {
 function handleInput() {
   //SHIFT key Speed burst
   if(keyIsDown(SHIFT)) {
-    playerMaxSpeed = 8;
+    playerMaxSpeed = 8-preyEaten;
   }
     else {
       playerMaxSpeed = 4;
@@ -204,6 +204,11 @@ function checkEating() {
       preyHealth = preyMaxHealth;
       // Track how many prey were eaten
       preyEaten++;
+      //Increase the player size and make them slower
+      playerRadius += preyEaten;
+      playerRadius = constrain(playerRadius,25,70);
+      playerMaxSpeed -= preyEaten;
+      playerMaxSpeed = constrain(playerMaxSpeed,0,8);
     }
   }
 }
@@ -244,13 +249,14 @@ function drawPrey() {
 
 // Draw the player as a rectangle with alpha based on health
 function drawPlayer() {
-  // rotate triangle around it's center one degree each frame
+
+  // rotate around it's center 3 degrees each frame
   push();
   rectMode(CENTER);
   translate(playerX,playerY);
-  rotate(radians(frameCount));
+  rotate(radians(frameCount*3));
   fill(playerFill,playerHealth);
-  rect(0,0,playerRadius,playerRadius);
+  rect(0,0,playerRadius,playerRadius,5,5,5,5);
   pop();
 }
 
@@ -262,7 +268,7 @@ function showGameOver() {
   textAlign(CENTER,CENTER);
   fill(0);
   var gameOverText = "GAME OVER\n";
-  gameOverText += "You ate " + preyEaten + " prey\n";
-  gameOverText += "before you died."
+  gameOverText += "You murdered " + preyEaten + " innocent circles \n";
+  gameOverText += "before obesity claimed your life";
   text(gameOverText,width/2,height/2);
 }
