@@ -289,8 +289,8 @@ text(gameOverText,width/2,height/2);
 else {
 var gameOverText = "WINNER\n";
 fill(255,255,0);
-gameOverText += "You ate " + preyEaten + " innocent circles.\n";
-gameOverText += "You considerate soul.\n";
+gameOverText += "You ate " + preyEaten + " innocent circles,\n";
+gameOverText += "you considerate soul.\n";
 text(gameOverText,width/2,height/2);
 }
 }
