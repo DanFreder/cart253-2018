@@ -49,6 +49,12 @@ var eatHealth = 10;
 // Number of prey eaten during the game
 var preyEaten = 0;
 
+//Variables for soundfiles
+var eatSong;
+var gameOverSong;
+eatSong = new Audio("assets/sounds/treasure.mp3");
+gameOverSong = new Audio("assets/sounds/gameOver.mp3");
+
 // setup()
 //
 // Sets up the basic elements of the game
@@ -90,7 +96,6 @@ function setupPlayer() {
 function draw() {
   background(100,100,200);
 
-
   if (!gameOver) {
     handleInput();
 
@@ -113,15 +118,16 @@ function draw() {
 // Checks arrow keys and adjusts player velocity accordingly
 function handleInput() {
   playerMaxSpeed = constrain(playerMaxSpeed,5,12);
-  preyEaten = constrain(preyEaten,0,10);
+// variable to slow player as he gets fat
+  preyEaten2 = constrain(preyEaten,0,10);
   playerHealth = constrain(playerHealth,0,255);
   //SHIFT key Speed burst
   if(keyIsDown(SHIFT)) {
-    playerMaxSpeed = 13-preyEaten;
+    playerMaxSpeed = 13-preyEaten2;
     playerHealth -= 1;
   }
     else {
-      playerMaxSpeed = 12-preyEaten;
+      playerMaxSpeed = 12-preyEaten2;
   }
   // Check for horizontal movement
   if (keyIsDown(LEFT_ARROW)) {
@@ -182,6 +188,7 @@ function updateHealth() {
   if (playerHealth === 0) {
     // If so, the game is over
     gameOver = true;
+    gameOverSong.play();
   }
 }
 
@@ -197,6 +204,8 @@ function checkEating() {
     playerHealth = constrain(playerHealth + eatHealth,0,playerMaxHealth);
     // Reduce the prey health
     preyHealth = constrain(preyHealth - eatHealth,0,preyMaxHealth);
+//play eating soundfile
+eatSong.play();
 
     // Check if the prey died
     if (preyHealth === 0) {
@@ -269,8 +278,18 @@ function showGameOver() {
   textSize(32);
   textAlign(CENTER,CENTER);
   fill(0);
-  var gameOverText = "GAME OVER\n";
-  gameOverText += "You ate " + preyEaten + " innocent circles.\n";
-  gameOverText += "You monster.\n";
-  text(gameOverText,width/2,height/2);
+
+if (preyEaten > 0) {
+var gameOverText = "GAME OVER\n";
+gameOverText += "You ate " + preyEaten + " innocent circles,\n";
+gameOverText += "You monster.\n";
+text(gameOverText,width/2,height/2);
+}
+else {
+var gameOverText = "WINNER\n";
+fill(random(255));
+gameOverText += "You ate " + preyEaten + " innocent circles.\n";
+gameOverText += "You considerate soul.\n";
+text(gameOverText,width/2,height/2);
+}
 }
