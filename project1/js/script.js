@@ -281,13 +281,14 @@ function showGameOver() {
 
 if (preyEaten > 0) {
 var gameOverText = "GAME OVER\n";
+fill(random(255))
 gameOverText += "You ate " + preyEaten + " innocent circles,\n";
-gameOverText += "You monster.\n";
+gameOverText += "you monster.\n";
 text(gameOverText,width/2,height/2);
 }
 else {
 var gameOverText = "WINNER\n";
-fill(random(255));
+fill(255,255,0);
 gameOverText += "You ate " + preyEaten + " innocent circles.\n";
 gameOverText += "You considerate soul.\n";
 text(gameOverText,width/2,height/2);
