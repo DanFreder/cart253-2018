@@ -1,23 +1,16 @@
-var x;
-var y;
-var vx;
-var vy;
-var radius = 25;
-var maxSpeed = 1;
+var ball1;
+var ball2;
 
 function setup() {
-  createCanvas(500,500);
-  fill(255,0,0);
-  noStroke();
-  x = width/2;
-  y = height/2;
-  vx = speed;
-  vy = -speed;
+  createCanvas(640, 480);
+  ball1 = new Ball(10, 100, 5, -3, 10, 1);
+  ball2 = new Ball(50, 200, -3, 5, 20, 1);
 }
 
 function draw() {
-  background(100);
-  x += vx;
-  y += vy;
-  ellipse(x,y,radius*2);
+  background(0);
+  ball1.update();
+  ball1.display();
+  ball2.update();
+  ball2.display();
 }

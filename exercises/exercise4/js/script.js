@@ -297,11 +297,13 @@ function handleBallOffScreen() {
 
 function reset() {
 
-if (leftPadScore > rightPadScore) {
-leftPaddle.colour = 50;
+if (leftPadScore >> rightPadScore) {
+leftPaddle.colour = 255;
+rightPaddle.colour = 100;
 }
 else {
-rightPaddle.colour = 50;
+leftPaddle.colour = 255;
+rightPaddle.colour = 100;
   }
 /////////END NEW////////
 }
@@ -317,7 +319,7 @@ function displayBall() {
 //
 // Draws the specified paddle on screen based on its properties
 function displayPaddle(paddle) {
-  rect(paddle.x,paddle.y,paddle.w,paddle.h);
   fill(leftPaddle.colour);
   fill(rightPaddle.colour);
+  rect(paddle.x,paddle.y,paddle.w,paddle.h);
 }
