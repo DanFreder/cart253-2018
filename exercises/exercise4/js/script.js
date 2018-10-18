@@ -40,7 +40,8 @@ var leftPaddle = {
   vy: 0,
   speed: 5,
   upKeyCode: 87, // The key code for W
-  downKeyCode: 83 // The key code for S
+  downKeyCode: 83, // The key code for S
+  colour: 255
 }
 
 // RIGHT PADDLE
@@ -56,7 +57,8 @@ var rightPaddle = {
   vy: 0,
   speed: 5,
   upKeyCode: 38, // The key code for the UP ARROW
-  downKeyCode: 40 // The key code for the DOWN ARROW
+  downKeyCode: 40, // The key code for the DOWN ARROW
+  colour: 255
 }
 
 var leftPadScore = 0;
@@ -296,6 +298,12 @@ function handleBallOffScreen() {
 /////////NEW//////////
 function reset() {
 
+  if (leftPadScore > rightPadScore) {
+
+}
+else {
+
+  }
 /////////END NEW////////
 }
 
