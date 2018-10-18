@@ -285,28 +285,32 @@ function handleBallOffScreen() {
     rightPadScore += 1;
     ball.x = width / 2;
     ball.y = height / 2;
+    ball.vx = 3;
   }
   if (ballLeft > width) {
     leftPadScore += 1;
     ball.x = width / 2;
     ball.y = height / 2;
+    ball.vx = -3;
   }
 }
 
 function reset() {
-
-  if (leftPadScore > rightPadScore) {
+  if (leftPadScore == rightPadScore) {
+    leftPaddle.colour = 255;
+    rightPaddle.colour = 255;
+  }
+  else if (leftPadScore > rightPadScore) {
     leftPaddle.colour = 255;
     rightPaddle.colour = 100;
   } else {
     leftPaddle.colour = 100;
     rightPaddle.colour = 255;
   }
-  /////////END NEW////////
 }
 
-// displayBall()
-//
+  /////////END NEW////////
+
 // Draws ball on screen based on its properties
 function displayBall() {
   rect(ball.x, ball.y, ball.size, ball.size);
@@ -316,6 +320,8 @@ function displayBall() {
 //
 // Draws the specified paddle on screen based on its properties
 function displayPaddle(paddle) {
+  ///// NEW /////////
   fill(paddle.colour);
+  ///// END NEW /////
   rect(paddle.x, paddle.y, paddle.w, paddle.h);
 }
