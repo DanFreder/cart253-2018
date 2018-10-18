@@ -81,7 +81,7 @@ function preload() {
 // and velocities.
 function setup() {
   // Create canvas and set drawing modes
-  createCanvas(640,480);
+  createCanvas(640, 480);
   rectMode(CENTER);
   noStroke();
   fill(fgColor);
@@ -96,19 +96,19 @@ function setup() {
 function setupPaddles() {
   // Initialise the left paddle
   leftPaddle.x = paddleInset;
-  leftPaddle.y = height/2;
+  leftPaddle.y = height / 2;
 
   // Initialise the right paddle
   rightPaddle.x = width - paddleInset;
-  rightPaddle.y = height/2;
+  rightPaddle.y = height / 2;
 }
 
 // setupBall()
 //
 // Sets the position and velocity of the ball
 function setupBall() {
-  ball.x = width/2;
-  ball.y = height/2;
+  ball.x = width / 2;
+  ball.y = height / 2;
   ball.vx = ball.speed;
   ball.vy = ball.speed;
 }
@@ -148,19 +148,18 @@ function draw() {
   displayBall();
   pop();
 
-////////NEW//////
+  ////////NEW//////
   push();
   strokeWeight(10);
-  fill (0, 102, 153, 255);
+  fill(0, 102, 153, 255);
   textSize(16);
-  textStyle(ITALIC,BOLD);
-  textAlign(RIGHT,BOTTOM);
-  text("Right Paddle: " + rightPadScore, width-150,450);
-  text("Left Paddle: " + leftPadScore, width-450,450);
+  textStyle(ITALIC, BOLD);
+  textAlign(RIGHT, BOTTOM);
+  text("Right Paddle: " + rightPadScore, width - 150, 450);
+  text("Left Paddle: " + leftPadScore, width - 450, 450);
   pop();
-
   reset();
-/////////END NEW/////////
+  /////////END NEW/////////
 
 }
 
@@ -193,8 +192,7 @@ function handleInput(paddle) {
   else if (keyIsDown(paddle.downKeyCode)) {
     // Move down
     paddle.vy = paddle.speed;
-  }
-  else {
+  } else {
     // Otherwise stop moving
     paddle.vy = 0;
   }
@@ -219,10 +217,10 @@ function updatePosition(object) {
 function handleBallWallCollision() {
 
   // Calculate edges of ball for clearer if statement below
-  var ballTop = ball.y - ball.size/2;
-  var ballBottom = ball.y + ball.size/2;
-  var ballLeft = ball.x - ball.size/2;
-  var ballRight = ball.x + ball.size/2;
+  var ballTop = ball.y - ball.size / 2;
+  var ballBottom = ball.y + ball.size / 2;
+  var ballLeft = ball.x - ball.size / 2;
+  var ballRight = ball.x + ball.size / 2;
 
   // Check for ball colliding with top and bottom
   if (ballTop < 0 || ballBottom > height) {
@@ -241,16 +239,16 @@ function handleBallWallCollision() {
 function handleBallPaddleCollision(paddle) {
 
   // Calculate edges of ball for clearer if statements below
-  var ballTop = ball.y - ball.size/2;
-  var ballBottom = ball.y + ball.size/2;
-  var ballLeft = ball.x - ball.size/2;
-  var ballRight = ball.x + ball.size/2;
+  var ballTop = ball.y - ball.size / 2;
+  var ballBottom = ball.y + ball.size / 2;
+  var ballLeft = ball.x - ball.size / 2;
+  var ballRight = ball.x + ball.size / 2;
 
   // Calculate edges of paddle for clearer if statements below
-  var paddleTop = paddle.y - paddle.h/2;
-  var paddleBottom = paddle.y + paddle.h/2;
-  var paddleLeft = paddle.x - paddle.w/2;
-  var paddleRight = paddle.x + paddle.w/2;
+  var paddleTop = paddle.y - paddle.h / 2;
+  var paddleBottom = paddle.y + paddle.h / 2;
+  var paddleLeft = paddle.x - paddle.w / 2;
+  var paddleRight = paddle.x + paddle.w / 2;
 
   // First check it is in the vertical range of the paddle
   if (ballBottom > paddleTop && ballTop < paddleBottom) {
@@ -272,8 +270,8 @@ function handleBallPaddleCollision(paddle) {
 function handleBallOffScreen() {
 
   // Calculate edges of ball for clearer if statement below
-  var ballLeft = ball.x - ball.size/2;
-  var ballRight = ball.x + ball.size/2;
+  var ballLeft = ball.x - ball.size / 2;
+  var ballRight = ball.x + ball.size / 2;
 
   // Check for ball going off the sides
   // If it went off either side, reset it to the centre
@@ -285,41 +283,39 @@ function handleBallOffScreen() {
   ///////// NEW /////////
   if (ballRight < 0) {
     rightPadScore += 1;
-    ball.x = width/2;
-    ball.y = height/2;
-}
-    if (ballLeft > width) {
-    leftPadScore += 1;
-    ball.x = width/2;
-    ball.y = height/2;
-    }
+    ball.x = width / 2;
+    ball.y = height / 2;
   }
+  if (ballLeft > width) {
+    leftPadScore += 1;
+    ball.x = width / 2;
+    ball.y = height / 2;
+  }
+}
 
 function reset() {
 
-if (leftPadScore >> rightPadScore) {
-leftPaddle.colour = 255;
-rightPaddle.colour = 100;
-}
-else {
-leftPaddle.colour = 255;
-rightPaddle.colour = 100;
+  if (leftPadScore > rightPadScore) {
+    leftPaddle.colour = 255;
+    rightPaddle.colour = 100;
+  } else {
+    leftPaddle.colour = 100;
+    rightPaddle.colour = 255;
   }
-/////////END NEW////////
+  /////////END NEW////////
 }
 
 // displayBall()
 //
 // Draws ball on screen based on its properties
 function displayBall() {
-  rect(ball.x,ball.y,ball.size,ball.size);
+  rect(ball.x, ball.y, ball.size, ball.size);
 }
 
 // displayPaddle(paddle)
 //
 // Draws the specified paddle on screen based on its properties
 function displayPaddle(paddle) {
-  fill(leftPaddle.colour);
-  fill(rightPaddle.colour);
-  rect(paddle.x,paddle.y,paddle.w,paddle.h);
+  fill(paddle.colour);
+  rect(paddle.x, paddle.y, paddle.w, paddle.h);
 }
