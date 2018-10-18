@@ -19,7 +19,10 @@ var ball = {
   size: 20,
   vx: 0,
   vy: 0,
-  speed: 5
+  speed: 5,
+  red: 32,
+  green: 191,
+  blue: 85
 }
 
 // PADDLES
@@ -145,13 +148,15 @@ function draw() {
   // Display the paddles and ball
   displayPaddle(leftPaddle);
   displayPaddle(rightPaddle);
+  pop();
+  push();
   displayBall();
   pop();
 
   ////////NEW//////
   push();
   strokeWeight(10);
-  fill(0, 102, 153, 255);
+  fill(1, 186, 239, 255);
   textSize(16);
   textStyle(ITALIC, BOLD);
   textAlign(RIGHT, BOTTOM);
@@ -280,39 +285,40 @@ function handleBallOffScreen() {
   // position is reset.
   // This is where we would count points etc! lol
 
-  ///////// NEW /////////
+///////// NEW /////////
   if (ballRight < 0) {
     rightPadScore += 1;
     ball.x = width / 2;
     ball.y = height / 2;
-    ball.vx = 3;
+    ball.vx = 4;
+    ball.vy *= random(.5,1.5);
   }
   if (ballLeft > width) {
     leftPadScore += 1;
     ball.x = width / 2;
     ball.y = height / 2;
-    ball.vx = -3;
+    ball.vx = -4;
+    ball.vy *= random(.5,1.5);
   }
 }
 
 function reset() {
   if (leftPadScore == rightPadScore) {
-    leftPaddle.colour = 255;
-    rightPaddle.colour = 255;
-  }
-  else if (leftPadScore > rightPadScore) {
-    leftPaddle.colour = 255;
-    rightPaddle.colour = 100;
+    leftPaddle.colour = 251;
+    rightPaddle.colour = 251;
+  } else if (leftPadScore > rightPadScore) {
+    leftPaddle.colour = 251;
+    rightPaddle.colour = 117;
   } else {
-    leftPaddle.colour = 100;
-    rightPaddle.colour = 255;
+    leftPaddle.colour = 117;
+    rightPaddle.colour = 251;
   }
 }
-
-  /////////END NEW////////
+/////////END NEW////////
 
 // Draws ball on screen based on its properties
 function displayBall() {
+  fill(ball.red,ball.green,ball.blue);
   rect(ball.x, ball.y, ball.size, ball.size);
 }
 
