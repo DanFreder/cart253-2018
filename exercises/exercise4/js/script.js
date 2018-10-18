@@ -155,8 +155,8 @@ function draw() {
   textSize(16);
   textStyle(ITALIC,BOLD);
   textAlign(RIGHT,BOTTOM);
-  text("Right Paddle " + rightPadScore, width-150,450);
-  text("Left Paddle " + leftPadScore, width-450,450);
+  text("Right Paddle: " + rightPadScore, width-150,450);
+  text("Left Paddle: " + leftPadScore, width-450,450);
   pop();
 
   reset();
@@ -276,6 +276,12 @@ function handleBallOffScreen() {
   var ballRight = ball.x + ball.size/2;
 
   // Check for ball going off the sides
+  // If it went off either side, reset it to the centre
+  // NOTE that we don't change its velocity here so it just
+  // carries on moving with the same velocity after its
+  // position is reset.
+  // This is where we would count points etc! lol
+
   ///////// NEW /////////
   if (ballRight < 0) {
     rightPadScore += 1;
@@ -287,22 +293,15 @@ function handleBallOffScreen() {
     ball.x = width/2;
     ball.y = height/2;
     }
-///////// END NEW /////////
-    // If it went off either side, reset it to the centre
-    // NOTE that we don't change its velocity here so it just
-    // carries on moving with the same velocity after its
-    // position is reset.
-    // This is where we would count points etc! lol
   }
 
-/////////NEW//////////
 function reset() {
 
-  if (leftPadScore > rightPadScore) {
-
+if (leftPadScore > rightPadScore) {
+leftPaddle.colour = 50;
 }
 else {
-
+rightPaddle.colour = 50;
   }
 /////////END NEW////////
 }
@@ -319,4 +318,6 @@ function displayBall() {
 // Draws the specified paddle on screen based on its properties
 function displayPaddle(paddle) {
   rect(paddle.x,paddle.y,paddle.w,paddle.h);
+  fill(leftPaddle.colour);
+  fill(rightPaddle.colour);
 }
