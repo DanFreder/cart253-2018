@@ -1,5 +1,6 @@
 // Pong
 // by Pippin Barr
+// modified by Dan Freder for Ex4
 //
 // A primitive implementation of Pong with no scoring system
 // just the ability to play the game with the keyboard.
@@ -57,6 +58,9 @@ var rightPaddle = {
   upKeyCode: 38, // The key code for the UP ARROW
   downKeyCode: 40 // The key code for the DOWN ARROW
 }
+
+var leftPadScore = 0;
+var rightPadScore = 0;
 
 // A variable to hold the beep sound we will play on bouncing
 var beepSFX;
@@ -128,6 +132,7 @@ function draw() {
   updatePosition(ball);
 
   // Handle collisions
+  push();
   handleBallWallCollision();
   handleBallPaddleCollision(leftPaddle);
   handleBallPaddleCollision(rightPaddle);
@@ -139,6 +144,22 @@ function draw() {
   displayPaddle(leftPaddle);
   displayPaddle(rightPaddle);
   displayBall();
+  pop();
+
+////////NEW//////
+  push();
+  strokeWeight(10);
+  fill (0, 102, 153, 255);
+  textSize(16);
+  textStyle(ITALIC,BOLD);
+  textAlign(RIGHT,BOTTOM);
+  text("Right Paddle " + rightPadScore, width-150,450);
+  text("Left Paddle " + leftPadScore, width-450,450);
+  pop();
+
+  reset();
+/////////END NEW/////////
+
 }
 
 
@@ -253,15 +274,29 @@ function handleBallOffScreen() {
   var ballRight = ball.x + ball.size/2;
 
   // Check for ball going off the sides
-  if (ballRight < 0 || ballLeft > width) {
-    // If it went off either side, reset it to the centre
+  ///////// NEW /////////
+  if (ballRight < 0) {
+    rightPadScore += 1;
     ball.x = width/2;
     ball.y = height/2;
+}
+    if (ballLeft > width) {
+    leftPadScore += 1;
+    ball.x = width/2;
+    ball.y = height/2;
+    }
+///////// END NEW /////////
+    // If it went off either side, reset it to the centre
     // NOTE that we don't change its velocity here so it just
     // carries on moving with the same velocity after its
     // position is reset.
-    // This is where we would count points etc!
+    // This is where we would count points etc! lol
   }
+
+/////////NEW//////////
+function reset() {
+
+/////////END NEW////////
 }
 
 // displayBall()
