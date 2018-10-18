@@ -285,20 +285,20 @@ function handleBallOffScreen() {
   // position is reset.
   // This is where we would count points etc! lol
 
-///////// NEW /////////
+  ///////// NEW /////////
   if (ballRight < 0) {
     rightPadScore += 1;
     ball.x = width / 2;
     ball.y = height / 2;
     ball.vx = 4;
-    ball.vy *= random(.5,1.5);
+    ball.vy *= random(.5, 1.5);
   }
   if (ballLeft > width) {
     leftPadScore += 1;
     ball.x = width / 2;
     ball.y = height / 2;
     ball.vx = -4;
-    ball.vy *= random(.5,1.5);
+    ball.vy *= random(.5, 1.5);
   }
 }
 
@@ -318,8 +318,10 @@ function reset() {
 
 // Draws ball on screen based on its properties
 function displayBall() {
-  fill(ball.red,ball.green,ball.blue);
-  rect(ball.x, ball.y, ball.size, ball.size);
+  ///// NEW /////////
+  fill(ball.red, ball.green, ball.blue);
+  ///// END NEW /////
+  ellipse(ball.x, ball.y, ball.size, ball.size);
 }
 
 // displayPaddle(paddle)
