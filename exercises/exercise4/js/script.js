@@ -69,12 +69,17 @@ var rightPadScore = 0;
 
 // A variable to hold the beep sound we will play on bouncing
 var beepSFX;
+var whooshSFX;
 
 // preload()
 //
 // Loads the beep audio for the sound of bouncing
 function preload() {
   beepSFX = new Audio("assets/sounds/beep.wav");
+
+  /////NEW/////
+  whooshSFX = new Audio("assets/sounds/whoosh.m4a");
+  /////END NEW/////
 }
 
 // setup()
@@ -151,6 +156,7 @@ function draw() {
   pop();
   push();
   displayBall();
+  displayBall(2);
   pop();
 
   ////////NEW//////
@@ -232,8 +238,8 @@ function handleBallWallCollision() {
     // If it touched the top or bottom, reverse its vy
     ball.vy = -ball.vy;
     // Play our bouncing sound effect by rewinding and then playing
-    beepSFX.currentTime = 0;
-    beepSFX.play();
+    whooshSFX.currentTime = 0;
+    whooshSFX.play();
   }
 }
 
@@ -291,14 +297,14 @@ function handleBallOffScreen() {
     ball.x = width / 2;
     ball.y = height / 2;
     ball.vx = 4;
-    ball.vy *= random(.5, 1.5);
+    ball.vy *= random(.5, 2);
   }
   if (ballLeft > width) {
     leftPadScore += 1;
     ball.x = width / 2;
     ball.y = height / 2;
     ball.vx = -4;
-    ball.vy *= random(.5, 1.5);
+    ball.vy *= random(.5, 2);
   }
 }
 
@@ -314,21 +320,13 @@ function reset() {
     rightPaddle.colour = 251;
   }
 }
-/////////END NEW////////
 
-// Draws ball on screen based on its properties
 function displayBall() {
-  ///// NEW /////////
   fill(ball.red, ball.green, ball.blue);
-  ///// END NEW /////
   ellipse(ball.x, ball.y, ball.size, ball.size);
 }
 
-// displayPaddle(paddle)
-//
-// Draws the specified paddle on screen based on its properties
 function displayPaddle(paddle) {
-  ///// NEW /////////
   fill(paddle.colour);
   ///// END NEW /////
   rect(paddle.x, paddle.y, paddle.w, paddle.h);
