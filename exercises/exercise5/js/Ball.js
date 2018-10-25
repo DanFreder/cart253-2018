@@ -41,7 +41,6 @@ Ball.prototype.update = function() {
 // Otherwise it returns false.
 Ball.prototype.isOffScreen = function() {
   // Check for going off screen and reset if so
-
 /////NEW/////
   if (this.x + this.size < 0) {
   rightPadScore += 1;
@@ -55,6 +54,8 @@ Ball.prototype.isOffScreen = function() {
     return false;
   }
 }
+
+
 /////END NEW/////
 
 // display()
@@ -87,6 +88,17 @@ Ball.prototype.handleCollision = function(paddle) {
 //
 // Set position back to the middle of the screen
 Ball.prototype.reset = function() {
+  ///////// NEW /////////
+if (ball.x < 0) {
   this.x = width / 2;
   this.y = height / 2;
+  this.vx = 4;
+  this.vy *= random(.75, 1.25);
+}
+if (ball.x > width) {
+  this.x = width / 2;
+  this.y = height / 2;
+  this.vx = -4;
+  this.vy *= random(.75, 1.25);
+}
 }
