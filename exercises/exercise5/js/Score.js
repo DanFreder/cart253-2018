@@ -12,11 +12,11 @@ this.size = size;
 Score.prototype.display = function() {
 push();
 strokeWeight(10);
-fill(255);
+fill(251,54,64);
 textSize(this.size);
 textStyle(ITALIC, BOLD);
 textAlign(this.x,this.y);
-text("Right Paddle: " + rightPadScore, width - 120, 450);
+text("Right Paddle: " + rightPadScore, width - 140, 450);
 text("Left Paddle: " + leftPadScore, width - 600, 450);
 pop();
 }

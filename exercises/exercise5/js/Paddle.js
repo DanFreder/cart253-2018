@@ -61,5 +61,5 @@ Paddle.prototype.display = function() {
     leftPaddle.colour = 117;
     rightPaddle.colour = 251;
   }
-}
+  }
   /////END NEW/////
