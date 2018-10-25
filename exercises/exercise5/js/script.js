@@ -1,11 +1,11 @@
 // Basic OO Pong
-// by Pippin Barr
+// by Pippin Barr modified by Dan Freder for Ex 5
 //
-// A primitive implementation of Pong with no scoring system
-// just the ability to play the game with the keyboard.
+// A primitive implementation of Pong
+// playable with the keyboard.
 //
-// Arrow keys control the right hand paddle, W and S control
-// the left hand paddle.
+// Arrow keys = right paddle
+// W and S = left paddle.
 //
 // Written with JavaScript OOP.
 
@@ -13,6 +13,7 @@
 var ball;
 var leftPaddle;
 var rightPaddle;
+var score;
 
 // setup()
 //
@@ -26,6 +27,7 @@ function setup() {
   // Create the left paddle with W and S as controls
   // Keycodes 83 and 87 are W and S respectively
   leftPaddle = new Paddle(0,height/2,10,60,10,83,87);
+  score = new Score(15);
 }
 
 // draw()
@@ -48,7 +50,7 @@ function draw() {
 
   ball.handleCollision(leftPaddle);
   ball.handleCollision(rightPaddle);
-
+  score.display();
   ball.display();
   leftPaddle.display();
   rightPaddle.display();
