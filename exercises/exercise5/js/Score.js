@@ -12,13 +12,13 @@ function Score(size) {
 Score.prototype.display = function() {
   if (leftPadScore === rightPadScore) {
     push();
-    fill(76, 159, 112);
+    fill(76, 159, random(256));
     strokeWeight(10);
     textSize(this.size);
     textStyle(ITALIC, BOLD);
     textAlign(this.x, this.y);
     text("Left Paddle: " + leftPadScore, width - 600, 450);
-    text("Right Paddle: " + rightPadScore, width - 140, 450);
+    text("Right Paddle: " + rightPadScore, width - 160, 450);
     pop();
   }
   if (leftPadScore > rightPadScore) {
@@ -28,7 +28,7 @@ Score.prototype.display = function() {
     textSize(this.size);
     textStyle(ITALIC, BOLD);
     textAlign(this.x, this.y);
-    text("Right Paddle: " + rightPadScore, width - 140, 450);
+    text("Right Paddle: " + rightPadScore, width - 160, 450);
     pop();
     push();
     fill(76, 159, 112);
@@ -46,7 +46,7 @@ Score.prototype.display = function() {
     textSize(this.size);
     textStyle(ITALIC, BOLD);
     textAlign(this.x, this.y);
-    text("Right Paddle: " + rightPadScore, width - 140, 450);
+    text("Right Paddle: " + rightPadScore, width - 160, 450);
     pop();
     push();
     fill(251, 54, 64);
