@@ -23,14 +23,14 @@ function setup() {
   /////FIXED - removed nostroke()
   createCanvas(640, 480);
   // Create a ball
-  ball = new Ball(width / 2, height / 2, 10, 10, 10, 3);
+  ball = new Ball(width / 2, height / 2, 5, 5, 10, 2);
   // Create the right paddle with UP and DOWN as controls
 
   /////FIXED - changed Paddle h from 600 to 60 and reversed direction commands
-  rightPaddle = new Paddle(width - 10, 240, 10, 60, 10, DOWN_ARROW, UP_ARROW);
+  rightPaddle = new Paddle(width - 10, height / 2, 10, 60, 10, DOWN_ARROW, UP_ARROW);
   // Create the left paddle with W and S as controls
   // Keycodes 83 and 87 are W and S respectively
-  leftPaddle = new Paddle(0, 240, 10, 60, 10, 83, 87);
+  leftPaddle = new Paddle(0, height / 2, 10, 60, 10, 83, 87);
 }
 /////FIXED
 
