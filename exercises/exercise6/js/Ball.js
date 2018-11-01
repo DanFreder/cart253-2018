@@ -25,7 +25,7 @@ function Ball(x, y, vx, vy, size, speed) {
 /////FIXED
 Ball.prototype.update = function() {
   // Update position with velocity
-  this.x = this.vx;
+  this.x += this.vx;
   this.y += this.vy;
 
   // Constrain y position to be on screen
@@ -43,19 +43,26 @@ Ball.prototype.update = function() {
 // Otherwise it returns false.
 Ball.prototype.isOffScreen = function() {
   // Check for going off screen and reset if so
-  if ((this.x + this.size < 0) && (this.x > width)) {
+
+  /////FIXED - separated into 2 if statements
+  if (this.x + this.size < 0) {
     return true;
-    }
-    else {
+  }
+  if (this.x > width) {
     return false;
-    }
+  } else {
+    return false;
+  }
 }
 
 // display()
 //
 // Draw the ball as a rectangle on the screen
 Ball.prototype.display = function() {
-  rect(this.x,this.y);
+
+  /////FIXED - added size param to rect and a fill
+  fill(255);
+  rect(this.x,this.y,this.size,this.size);
 }
 
 // handleCollision(paddle)
@@ -65,25 +72,25 @@ Ball.prototype.display = function() {
 
 /////FIXED - added Paddle inside function brackets
 Ball.prototype.handleCollision = function(paddle) {
-      // Check if the ball overlaps the paddle on x axis
-      if (this.x + this.size > paddle.x && this.x < paddle.x + paddle.w) {
-        // Check if the ball overlaps the paddle on y axis
-        if (this.y + this.size > paddle.y && this.y < paddle.y + paddle.h) {
-          // If so, move ball back to previous position (by subtracting current velocity)
-          this.x -= this.vx;
-          this.y -= this.vy;
-          // Reverse x velocity to bounce
-          this.vx = this.vx;
-        }
-      }
+  // Check if the ball overlaps the paddle on x axis
+  if (this.x + this.size > paddle.x && this.x < paddle.x + paddle.w) {
+    // Check if the ball overlaps the paddle on y axis
+    if (this.y + this.size > paddle.y && this.y < paddle.y + paddle.h) {
+      // If so, move ball back to previous position (by subtracting current velocity)
+      this.x -= this.vx;
+      this.y -= this.vy;
+      // Reverse x velocity to bounce
+      this.vx = this.vx;
     }
+  }
+}
 
-    // reset()
-    //
-    // Set position back to the middle of the screen
+// reset()
+//
+// Set position back to the middle of the screen
 
-    /////FIXED
-    Ball.prototype.reset = function() {
-      this.x = width / 2;
-      this.y = height / 2;
-    }
+/////FIXED
+Ball.prototype.reset = function() {
+  this.x = width/2;
+  this.y = height/2;
+}
