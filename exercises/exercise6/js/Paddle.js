@@ -33,9 +33,9 @@ Paddle.prototype.handleInput = function() {
     this.vy = -this.speed;
   } else if (keyIsDown(this.downKey)) {
     this.vy = this.speed;
-  }
-  else {
+  } else {
     this.vy = 0;
+/////FIXED - prevents runaway paddles/stops paddles when keys aren't pressed)
   }
 }
 
