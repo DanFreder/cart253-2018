@@ -39,7 +39,7 @@ Paddle.prototype.handleInput = function() {
 // Constrain the resulting position to be within the canvas
 Paddle.prototype.update = function() {
   this.y += this.vy;
-  /////FIXED the funtion is "constrain", similar to map
+  /////FIXED the funtion is called "constrain", and is similar to map (not "constrained")
   this.y = constrain(this.y, 0, height - this.h);
 }
 
