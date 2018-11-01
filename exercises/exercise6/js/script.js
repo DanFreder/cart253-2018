@@ -10,7 +10,9 @@
 // Written with JavaScript OOP.
 
 // Variable to contain the objects representing our ball and paddles
-var bal;
+
+/////FIXED
+var ball;
 var leftPaddle;
 var rightPaddle;
 
@@ -18,7 +20,8 @@ var rightPaddle;
 //
 // Creates the ball and paddles
 function setup() {
-  crateCanvas(640, 480);
+/////FIXED
+  createCanvas(640, 480);
   noStroke();
   // Create a ball
   ball = new Ball(width / 2, height / 2, 50, 50, 10, 50);
@@ -26,7 +29,7 @@ function setup() {
   rightPaddle = new Paddle(width - 10, height / 2, 10, 600, 10, UP_ARROW, DOWN_ARROW);
   // Create the left paddle with W and S as controls
   // Keycodes 83 and 87 are W and S respectively
-  leftPaddle = new Paddle(0, height / 2, 10, 60, 10, 83, 87;
+  leftPaddle = new Paddle(0, height / 2, 10, 60, 10, 83, 87);
   }
   /////FIXED
 
@@ -40,7 +43,8 @@ function setup() {
     leftPaddle.handleInput();
     rightPaddle.handleInput();
 
-    ball.update;
+/////FIXED
+    ball.update();
     leftPaddle.update();
     rightPaddle.update();
 
@@ -54,5 +58,6 @@ function setup() {
 
     ball.display();
     leftPaddle.display();
-    rightPaddle.display(;
+    /////FIXED
+    rightPaddle.display();
     }
