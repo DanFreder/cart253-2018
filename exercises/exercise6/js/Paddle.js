@@ -7,7 +7,7 @@
 
 //Sets the properties with the provided arguments or defaults
 
-function Paddle(x,y,w,h,speed,downKey,upKey) {
+function Paddle(x, y, w, h, speed, downKey, upKey) {
   this.x = x;
   this.y = y;
   this.xv = 0;
@@ -25,13 +25,12 @@ function Paddle(x,y,w,h,speed,downKey,upKey) {
 // Check if the up or down keys are pressed and update velocity
 // appropriately
 
-/////FIXED - corrected syntax
+/////FIXED - corrected syntax and reversed downkey direction
 Paddle.prototype.handleInput = function() {
   if (keyIsDown(this.upKey)) {
     this.vy = -this.speed;
-  }
-  else if (keyIsDown(this.downKey)) {
-    this.vy = -this.speed;
+  } else if (keyIsDown(this.downKey)) {
+    this.vy = this.speed;
   }
 }
 
@@ -41,7 +40,7 @@ Paddle.prototype.handleInput = function() {
 Paddle.prototype.update = function() {
   this.y += this.vy;
   /////FIXED the funtion is "constrain", similar to map
-  this.y = constrain(this.y,0,height-this.h);
+  this.y = constrain(this.y, 0, height - this.h);
 }
 
 // display()
@@ -49,6 +48,6 @@ Paddle.prototype.update = function() {
 // Draw the paddle as a rectangle on the screen
 Paddle.prototype.display = function() {
   fill(255);
-  rect(this.x,this.y,this.w,this.h);
-/////FIXED - the name of the function to draw a rectangle is "rect"
+  rect(this.x, this.y, this.w, this.h);
+  /////FIXED - the name of the function to draw a rectangle is "rect"
 }

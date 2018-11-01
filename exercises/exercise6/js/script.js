@@ -20,9 +20,8 @@ var rightPaddle;
 //
 // Creates the ball and paddles
 function setup() {
-  /////FIXED
+  /////FIXED - removed nostroke()
   createCanvas(640, 480);
-  noStroke();
   // Create a ball
   ball = new Ball(width/2, height/2, 10, 10, 10, 10);
   // Create the right paddle with UP and DOWN as controls
