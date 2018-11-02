@@ -58,15 +58,15 @@ BigBall.prototype.isOffScreen = function() {
 //
 // Draw the ball as a rectangle on the screen
 BigBall.prototype.display = function() {
-  fill(0,255,20,255);
+  fill(4,231,98);
   ellipse(this.x, this.y, this.size, this.size);
   push();
   fill(0);
   textSize(22);
-  textStyle(ITALIC,BOLD);
-  textFont('Georgia')
+  textStyle(BOLD);
+  textFont('Helvetica')
   textAlign(CENTER, CENTER);
-  text("10",this.x,this.y);
+  text("X",this.x,this.y+2);
   pop();
 }
 
