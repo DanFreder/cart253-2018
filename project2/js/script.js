@@ -1,5 +1,5 @@
 var balls = [];
-var numBalls = 100;
+var numBalls = 1000;
 var leftPadScore = 0;
 var rightPadScore = 0;
 
