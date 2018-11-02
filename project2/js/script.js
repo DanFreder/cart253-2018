@@ -28,15 +28,15 @@ function draw() {
     push();
     rectMode(CENTER);
     fill(20);
-    rect(windowWidth / 2, windowHeight / 2, windowWidth - 300, windowHeight - 300);
+    rect(windowWidth / 2, windowHeight / 2, windowWidth/4+50, windowHeight/4+50);
     fill(4,231,98);
-    rect(windowWidth / 2, windowHeight / 2, windowWidth - 500, windowHeight - 500);
-    textSize(100);
+    rect(windowWidth / 2, windowHeight / 2, windowWidth/4, windowHeight/4);
+    textSize(40);
     textStyle(ITALIC, BOLD);
     textAlign(CENTER, CENTER);
     fill(0);
     textFont('futura');
-    text("click to start", windowWidth / 2, (windowHeight / 2)-20);
+    text("click to start", windowWidth / 2, (windowHeight / 2)-10);
     pop();
   } else {
 
