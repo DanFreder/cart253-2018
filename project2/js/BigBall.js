@@ -12,8 +12,9 @@ function BigBall(x, y, vx, vy, size, speed) {
   this.y = y;
   this.vx = vx;
   this.vy = vy;
-  this.size = 20;
+  this.size = 30;
   this.speed = speed;
+
 }
 
 // update()
@@ -42,9 +43,11 @@ BigBall.prototype.update = function() {
 BigBall.prototype.isOffScreen = function() {
   // Check for going off screen and reset if so
   if (this.x + this.size < 0) {
+    rightPadScore += 10;
     return true;
   }
   if (this.x > width) {
+    leftPadScore += 10;
     return true;
   } else {
     return false;
@@ -55,8 +58,16 @@ BigBall.prototype.isOffScreen = function() {
 //
 // Draw the ball as a rectangle on the screen
 BigBall.prototype.display = function() {
-  fill(255);
+  fill(0,255,20,255);
   ellipse(this.x, this.y, this.size, this.size);
+  push();
+  fill(0);
+  textSize(22);
+  textStyle(ITALIC,BOLD);
+  textFont('Georgia')
+  textAlign(CENTER, CENTER);
+  text("10",this.x,this.y);
+  pop();
 }
 
 // handleCollision(paddle)
