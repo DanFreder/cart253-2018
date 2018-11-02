@@ -44,10 +44,13 @@ BigBall.prototype.isOffScreen = function() {
   // Check for going off screen and reset if so
   if (this.x + this.size < 0) {
     rightPadScore += 10;
+    this.vx = -this.vx;
     return true;
+
   }
   if (this.x > width) {
     leftPadScore += 10;
+    this.vx = -this.vx;
     return true;
   } else {
     return false;
@@ -58,7 +61,7 @@ BigBall.prototype.isOffScreen = function() {
 //
 // Draw the ball as a rectangle on the screen
 BigBall.prototype.display = function() {
-  fill(4,231,98);
+  fill(4, 231, 98);
   ellipse(this.x, this.y, this.size, this.size);
   push();
   fill(0);
@@ -66,7 +69,7 @@ BigBall.prototype.display = function() {
   textStyle(BOLD);
   textFont('Helvetica')
   textAlign(CENTER, CENTER);
-  text("X",this.x,this.y+2);
+  text("X", this.x, this.y + 2);
   pop();
 }
 
