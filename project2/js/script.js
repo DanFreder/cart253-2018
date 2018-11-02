@@ -10,6 +10,7 @@ function setup() {
     }
     rightPaddle = new Paddle(width-10,height/2,10,60,10,DOWN_ARROW,UP_ARROW);
     leftPaddle = new Paddle(0,height/2,10,60,10,83,87);
+    score = new Score(50);
 }
 
 function draw() {
@@ -33,6 +34,7 @@ function draw() {
 
   leftPaddle.display();
   rightPaddle.display();
+  score.display();
 }
 
 
