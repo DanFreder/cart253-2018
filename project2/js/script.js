@@ -1,5 +1,5 @@
 var balls = [];
-var numBalls = 1000;
+var numBalls = 100;
 var leftPadScore = 0;
 var rightPadScore = 0;
 
@@ -11,6 +11,7 @@ function setup() {
     rightPaddle = new Paddle(width-10,height/2,10,60,10,DOWN_ARROW,UP_ARROW);
     leftPaddle = new Paddle(0,height/2,10,60,10,83,87);
     score = new Score(50);
+    bigBall = new BigBall(width/2,height/2,random(-5,5),random(-2,2),10,20);
 }
 
 function draw() {
@@ -21,6 +22,10 @@ function draw() {
 
   leftPaddle.update();
   rightPaddle.update();
+  bigBall.update();
+  if (bigBall.isOffScreen()) {
+    bigBall.reset();
+  }
 
   for (var i = 0; i < balls.length; i++) {
     balls[i].update();
@@ -30,11 +35,14 @@ function draw() {
     balls[i].handleCollision(leftPaddle);
     balls[i].handleCollision(rightPaddle);
     balls[i].display();
+    bigBall.handleCollision(leftPaddle);
+    bigBall.handleCollision(rightPaddle);
   }
 
   leftPaddle.display();
   rightPaddle.display();
   score.display();
+  bigBall.display();
 }
 
 
