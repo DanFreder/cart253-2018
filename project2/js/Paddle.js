@@ -48,4 +48,17 @@ Paddle.prototype.update = function() {
 Paddle.prototype.display = function() {
   fill(255);
   rect(this.x,this.y,this.w,this.h);
+
+/////NEW/////
+  if (leftPadScore == rightPadScore) {
+  leftPaddle.colour = 251;
+  rightPaddle.colour = 251;
+} else if (leftPadScore > rightPadScore) {
+  leftPaddle.colour = 251;
+  rightPaddle.colour = 117;
+} else {
+  leftPaddle.colour = 117;
+  rightPaddle.colour = 251;
 }
+}
+/////END NEW/////

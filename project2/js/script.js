@@ -1,8 +1,10 @@
 var balls = [];
-var numBalls = 1000;
+var numBalls = 100;
+var leftPadScore = 0;
+var rightPadScore = 0;
 
 function setup() {
-    createCanvas(640,480);
+    createCanvas(windowWidth,windowHeight);
     for (var i = 0; i < numBalls; i++) {
       balls.push(new Ball(width/2,height/2,random(-5,5),random(-2,2),10,5));
     }
