@@ -80,8 +80,8 @@ EnemyBall.prototype.handleCollision = function(paddle) {
       ///AND MAKE THE PADDLE SMALLER
       this.x -= this.vx;
       this.y -= this.vy;
-      paddle.h -= 6;
-      paddle.w += 2;
+      paddle.h -= 5;
+      paddle.w += 4;
       // Reverse x velocity to bounce
       this.vx = -this.vx;
     }

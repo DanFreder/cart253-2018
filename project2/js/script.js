@@ -1,5 +1,5 @@
 var balls = [];
-var numBalls = 20;
+var numBalls = 10;
 var leftPadScore = 0;
 var rightPadScore = 0;
 var mouse = 0;
@@ -9,8 +9,8 @@ function setup() {
   for (var i = 0; i < numBalls; i++) {
     balls.push(new Ball(width / 2, height / 2, random(-5, 5), random(-2, 2), 10, 5));
   }
-  rightPaddle = new Paddle(width - 10, height / 2, 10, 60, 10, DOWN_ARROW, UP_ARROW);
-  leftPaddle = new Paddle(0, height / 2, 10, 60, 10, 83, 87);
+  rightPaddle = new Paddle(width - 10, height / 2, 15, 100, 10, DOWN_ARROW, UP_ARROW);
+  leftPaddle = new Paddle(0, height / 2, 15, 100, 10, 83, 87);
   score = new Score(40);
   bigBall = new BigBall(width / 2, height / 2, 5, random(5, 5), 100);
   endScreen = new EndScreen();
