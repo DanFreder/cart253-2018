@@ -15,27 +15,27 @@ function setup() {
   bigBall = new BigBall(width / 2, height / 2, 5, random(5, 5), 100);
   endScreen = new EndScreen();
 
-///START SCREEN///
-    push();
-    rectMode(CENTER);
-    fill(20);
-    rect(windowWidth / 2, windowHeight / 2, windowWidth/4+50, windowHeight/4+50);
-    fill(4,231,98);
-    rect(windowWidth / 2, windowHeight / 2, windowWidth/4, windowHeight/4);
-    textSize(40);
-    textStyle(ITALIC, BOLD);
-    textAlign(CENTER, CENTER);
-    fill(0);
-    textFont('futura');
-    text("\"party pong\"", windowWidth / 2, (windowHeight / 2)-30);
-    textStyle(BOLD);
-    text("click to start", windowWidth / 2, (windowHeight / 2)+25);
-    pop();
+  ///START SCREEN///
+  push();
+  rectMode(CENTER);
+  fill(20);
+  rect(windowWidth / 2, windowHeight / 2, windowWidth / 4 + 50, windowHeight / 4 + 50);
+  fill(4, 231, 98);
+  rect(windowWidth / 2, windowHeight / 2, windowWidth / 4, windowHeight / 4);
+  textSize(40);
+  textStyle(ITALIC, BOLD);
+  textAlign(CENTER, CENTER);
+  fill(0);
+  textFont('futura');
+  text("\"party pong\"", windowWidth / 2, (windowHeight / 2) - 30);
+  textStyle(BOLD);
+  text("click to start", windowWidth / 2, (windowHeight / 2) + 25);
+  pop();
 }
 
 function draw() {
   if (mouse >= 1) {
-  background(0);
+    background(0);
 
     /// START GAME ///
     leftPaddle.handleInput();
@@ -64,13 +64,14 @@ function draw() {
     rightPaddle.display();
     score.display();
     bigBall.display();
-/////END SCREEN/////
-      if (leftPadScore >= 150) {
+    /////END SCREEN/////
+    if (leftPadScore >= 20 || rightPadScore >= 20) {
+      endScreen.update();
       endScreen.display();
-    } else {
     }
   }
 }
+
 function mousePressed() {
   mouse = mouse + 1;
 }

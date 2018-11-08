@@ -19,6 +19,7 @@ Score.prototype.display = function() {
     text(rightPadScore, windowWidth - 150, windowHeight - 100);
     pop();
   }
+
   if (leftPadScore > rightPadScore) {
     push();
     fill(251, 54, 64);
