@@ -36,7 +36,9 @@ function draw() {
     textAlign(CENTER, CENTER);
     fill(0);
     textFont('futura');
-    text("click to start", windowWidth / 2, (windowHeight / 2)-10);
+    text("\"party pong\"", windowWidth / 2, (windowHeight / 2)-30);
+    textStyle(BOLD);
+    text("click to start", windowWidth / 2, (windowHeight / 2)+25);
     pop();
   } else {
 
