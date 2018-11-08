@@ -14,6 +14,7 @@ function setup() {
   score = new Score(40);
   bigBall = new BigBall(width / 2, height / 2, 5, random(5, 5), 100);
   endScreen = new EndScreen();
+  enemyBall = new EnemyBall(width / 2, height / 2, 5, random(3, 3), 100);
 
   ///START SCREEN///
   push();
@@ -44,15 +45,21 @@ function draw() {
     leftPaddle.update();
     rightPaddle.update();
     bigBall.update();
+    enemyBall.update();
+    enemyBall.handleCollision(leftPaddle);
+    enemyBall.handleCollision(rightPaddle);
     if (bigBall.isOffScreen()) {
       bigBall.reset();
     }
-
+    if (enemyBall.isOffScreen()) {
+      enemyBall.reset();
+    }
     for (var i = 0; i < balls.length; i++) {
       balls[i].update();
       if (balls[i].isOffScreen()) {
         balls[i].reset();
       }
+
       balls[i].handleCollision(leftPaddle);
       balls[i].handleCollision(rightPaddle);
       balls[i].display();
@@ -64,6 +71,7 @@ function draw() {
     rightPaddle.display();
     score.display();
     bigBall.display();
+    enemyBall.display();
     /////END SCREEN/////
     if (leftPadScore >= 50 || rightPadScore >= 50) {
       endScreen.update();

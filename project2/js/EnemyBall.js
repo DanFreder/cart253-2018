@@ -12,9 +12,8 @@ function EnemyBall(x, y, vx, vy, size, speed) {
   this.y = y;
   this.vx = vx;
   this.vy = vy;
-  this.size = 30;
+  this.size = 10;
   this.speed = speed;
-
 }
 
 // update()
@@ -43,13 +42,10 @@ EnemyBall.prototype.update = function() {
 EnemyBall.prototype.isOffScreen = function() {
   // Check for going off screen and reset if so
   if (this.x + this.size < 0) {
-    rightPadScore += 10;
     this.vx = -this.vx;
     return true;
-
   }
   if (this.x > width) {
-    leftPadScore += 10;
     this.vx = -this.vx;
     return true;
   } else {
@@ -59,32 +55,31 @@ EnemyBall.prototype.isOffScreen = function() {
 
 // display()
 //
-// Draw the ball as a rectangle on the screen
+// Draw the enemy as a red rectangle on the screen
 EnemyBall.prototype.display = function() {
-  fill(4, 231, 98);
-  ellipse(this.x, this.y, this.size, this.size);
+  fill(255, 0, 0);
+  rect(this.x, this.y, this.size, this.size);
   push();
   fill(0);
   textSize(22);
   textStyle(BOLD);
-  textFont('Helvetica')
+  textFont('Courier');
   textAlign(CENTER, CENTER);
-  text("X", this.x, this.y + 2);
+  text("'_'", this.x, this.y);
   pop();
 }
 
-// handleCollision(paddle)
-//
-// Check if this ball overlaps the paddle passed as an argument
-// and if so reverse x velocity to bounce
+// Check if enemy overlaps the paddle, reverse x velocity + shorten paddle
 EnemyBall.prototype.handleCollision = function(paddle) {
   // Check if the ball overlaps the paddle on x axis
   if (this.x + this.size > paddle.x && this.x < paddle.x + paddle.w) {
     // Check if the ball overlaps the paddle on y axis
     if (this.y + this.size > paddle.y && this.y < paddle.y + paddle.h) {
       // If so, move ball back to previous position (by subtracting current velocity)
+      ///AND MAKE THE PADDLE SMALLER
       this.x -= this.vx;
       this.y -= this.vy;
+      paddle.h -= 10;
       // Reverse x velocity to bounce
       this.vx = -this.vx;
     }
