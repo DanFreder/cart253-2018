@@ -62,15 +62,7 @@ BigBall.prototype.isOffScreen = function() {
 // Draw the ball as a rectangle on the screen
 BigBall.prototype.display = function() {
   fill(4, 231, 98);
-  ellipse(this.x, this.y, this.size, this.size);
-  push();
-  fill(0);
-  textSize(22);
-  textStyle(BOLD);
-  textFont('Helvetica')
-  textAlign(CENTER, CENTER);
-  text("X", this.x, this.y + 2);
-  pop();
+  ellipse(this.x, this.y, this.size, this.size,20);
 }
 
 // handleCollision(paddle)

@@ -12,7 +12,7 @@ function EnemyBall(x, y, vx, vy, size, speed) {
   this.y = y;
   this.vx = vx;
   this.vy = vy;
-  this.size = 10;
+  this.size = 20;
   this.speed = speed;
 }
 
@@ -58,14 +58,15 @@ EnemyBall.prototype.isOffScreen = function() {
 // Draw the enemy as a red rectangle on the screen
 EnemyBall.prototype.display = function() {
   fill(255, 0, 0);
-  rect(this.x, this.y, this.size, this.size);
+rectMode(CENTER);
+  rect(this.x, this.y, this.size, this.size,3);
   push();
   fill(0);
-  textSize(22);
+  textSize(20);
   textStyle(BOLD);
-  textFont('Courier');
+  textFont('Helvetica');
   textAlign(CENTER, CENTER);
-  text("'_'", this.x, this.y);
+  text("X", this.x, this.y+2);
   pop();
 }
 
@@ -79,7 +80,8 @@ EnemyBall.prototype.handleCollision = function(paddle) {
       ///AND MAKE THE PADDLE SMALLER
       this.x -= this.vx;
       this.y -= this.vy;
-      paddle.h -= 10;
+      paddle.h -= 6;
+      paddle.w += 2;
       // Reverse x velocity to bounce
       this.vx = -this.vx;
     }
