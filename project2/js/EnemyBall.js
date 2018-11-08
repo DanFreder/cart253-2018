@@ -58,15 +58,15 @@ EnemyBall.prototype.isOffScreen = function() {
 // Draw the enemy as a red rectangle on the screen
 EnemyBall.prototype.display = function() {
   fill(255, 0, 0);
-rectMode(CENTER);
-  rect(this.x, this.y, this.size, this.size,3);
+  rectMode(CENTER);
+  rect(this.x, this.y, this.size, this.size, 3);
   push();
   fill(0);
   textSize(20);
   textStyle(BOLD);
   textFont('Helvetica');
   textAlign(CENTER, CENTER);
-  text("X", this.x, this.y+2);
+  text("X", this.x, this.y + 2);
   pop();
 }
 

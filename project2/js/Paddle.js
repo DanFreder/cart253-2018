@@ -6,7 +6,7 @@
 // Paddle constructor
 //
 // Sets the properties with the provided arguments or defaults
-function Paddle(x,y,w,h,speed,downKey,upKey) {
+function Paddle(x, y, w, h, speed, downKey, upKey) {
   this.x = x;
   this.y = y;
   this.vx = 0;
@@ -25,11 +25,9 @@ function Paddle(x,y,w,h,speed,downKey,upKey) {
 Paddle.prototype.handleInput = function() {
   if (keyIsDown(this.upKey)) {
     this.vy = -this.speed;
-  }
-  else if (keyIsDown(this.downKey)) {
+  } else if (keyIsDown(this.downKey)) {
     this.vy = this.speed;
-  }
-  else {
+  } else {
     this.vy = 0;
   }
 }
@@ -39,7 +37,7 @@ Paddle.prototype.handleInput = function() {
 // Constrain the resulting position to be within the canvas
 Paddle.prototype.update = function() {
   this.y += this.vy;
-  this.y = constrain(this.y,0,windowHeight-this.h);
+  this.y = constrain(this.y, 0, windowHeight - this.h);
 }
 
 // display()
@@ -47,18 +45,18 @@ Paddle.prototype.update = function() {
 // Draw the paddle as a rectangle on the screen
 Paddle.prototype.display = function() {
   fill(255);
-  rect(this.x,this.y,this.w,this.h);
+  rect(this.x, this.y, this.w, this.h);
 
-/////NEW/////
+  /////NEW/////
   if (leftPadScore == rightPadScore) {
-  leftPaddle.colour = 251;
-  rightPaddle.colour = 251;
-} else if (leftPadScore > rightPadScore) {
-  leftPaddle.colour = 251;
-  rightPaddle.colour = 117;
-} else {
-  leftPaddle.colour = 117;
-  rightPaddle.colour = 251;
-}
+    leftPaddle.colour = 251;
+    rightPaddle.colour = 251;
+  } else if (leftPadScore > rightPadScore) {
+    leftPaddle.colour = 251;
+    rightPaddle.colour = 117;
+  } else {
+    leftPaddle.colour = 117;
+    rightPaddle.colour = 251;
+  }
 }
 /////END NEW/////
