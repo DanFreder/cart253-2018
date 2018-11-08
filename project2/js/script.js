@@ -2,7 +2,7 @@ var balls = [];
 var numBalls = 50;
 var leftPadScore = 0;
 var rightPadScore = 0;
-var mouseState = 0;
+var mouse = 0;
 
 function setup() {
   cnv = createCanvas(windowWidth, windowHeight);
@@ -13,18 +13,9 @@ function setup() {
   leftPaddle = new Paddle(0, height / 2, 10, 60, 10, 83, 87);
   score = new Score(40);
   bigBall = new BigBall(width / 2, height / 2, 5, random(5, 5), 100);
-}
+  endScreen = new EndScreen();
 
-function mousePressed() {
-  mouseState += 1;
-}
-
-function draw() {
-  background(0);
-
-  ///START SCREEN///
-  cnv.mousePressed(mouseState)
-  if (mouseState === 0) {
+///START SCREEN///
     push();
     rectMode(CENTER);
     fill(20);
@@ -40,7 +31,11 @@ function draw() {
     textStyle(BOLD);
     text("click to start", windowWidth / 2, (windowHeight / 2)+25);
     pop();
-  } else {
+}
+
+function draw() {
+  if (mouse >= 1) {
+  background(0);
 
     /// START GAME ///
     leftPaddle.handleInput();
@@ -69,5 +64,13 @@ function draw() {
     rightPaddle.display();
     score.display();
     bigBall.display();
+/////END SCREEN/////
+      if (leftPadScore >= 150) {
+      endScreen.display();
+    } else {
+    }
   }
+}
+function mousePressed() {
+  mouse = mouse + 1;
 }
