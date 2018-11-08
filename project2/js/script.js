@@ -1,5 +1,5 @@
 var balls = [];
-var numBalls = 50;
+var numBalls = 20;
 var leftPadScore = 0;
 var rightPadScore = 0;
 var mouse = 0;
@@ -19,15 +19,15 @@ function setup() {
   push();
   rectMode(CENTER);
   fill(20);
-  rect(windowWidth / 2, windowHeight / 2, windowWidth / 4 + 50, windowHeight / 4 + 50);
+  rect(windowWidth / 2, windowHeight / 2, windowWidth / 3 + 50, windowHeight / 3 + 50);
   fill(4, 231, 98);
-  rect(windowWidth / 2, windowHeight / 2, windowWidth / 4, windowHeight / 4);
+  rect(windowWidth / 2, windowHeight / 2, windowWidth / 3, windowHeight / 3);
   textSize(40);
   textStyle(ITALIC, BOLD);
   textAlign(CENTER, CENTER);
   fill(0);
   textFont('futura');
-  text("\"party pong\"", windowWidth / 2, (windowHeight / 2) - 30);
+  text("stress pong", windowWidth / 2, (windowHeight / 2) - 35);
   textStyle(BOLD);
   text("click to start", windowWidth / 2, (windowHeight / 2) + 25);
   pop();
@@ -65,7 +65,7 @@ function draw() {
     score.display();
     bigBall.display();
     /////END SCREEN/////
-    if (leftPadScore >= 20 || rightPadScore >= 20) {
+    if (leftPadScore >= 50 || rightPadScore >= 50) {
       endScreen.update();
       endScreen.display();
     }
