@@ -30,8 +30,9 @@ function draw() {
   stroke(36,123,160);
   fill(0);
   rectMode(CENTER);
-  rect(3,3,windowWidth - 300, windowHeight - 200);
-  rect(-3,-3,windowWidth - 300, windowHeight - 200);
+  rect(5,5,windowWidth - 300, windowHeight - 200);
+  rect(-5,-5,windowWidth - 300, windowHeight - 200);
+  rect(0,0,windowWidth - 300, windowHeight - 200);
   pop();
 
 ///BLUE CUBE
@@ -43,7 +44,7 @@ function draw() {
   rotateY(o1y);
   rotateZ(o1z);
   fill(10,36,99);
-  box(300, 300, 300,4,4);
+  box(300, 300, 300,1,1);
   o1x += .002;
   o1y += .004;
   o1z += .003;
@@ -51,14 +52,14 @@ function draw() {
 
 ///RED CUBE
   push();
-  translate(10, 5, 3);
+  translate(10, 0, 3);
     strokeWeight(1);
       stroke(0);
   rotateX(o1x);
   rotateY(o1y);
   rotateZ(o1z);
   fill(251,54,64);
-  box(300, 300, 300,4,4);
+  box(300, 300, 300,1,1);
   o2x += .004;
   o2y += .003;
   o2z += .002;
@@ -73,7 +74,7 @@ function draw() {
   rotateY(o3y);
   rotateZ(o3z);
   fill(96,95,94);
-  box(300, 300, 300,4,4);
+  box(300, 300, 300,1,1);
   o3x += .003;
   o3y += .002;
   o3z += .004;
