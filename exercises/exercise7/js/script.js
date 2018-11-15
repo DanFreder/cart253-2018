@@ -21,11 +21,11 @@ function setup() {
 function draw() {
   background(0);
 
-//  cubes.update();
-//  blueRects.update();
+  cubes.update();
+  blueRects.update();
   polySpheres.update();
 
-//  cubes.display();
-//  blueRects.display();
+  cubes.display();
+  blueRects.display();
   polySpheres.display();
 }
