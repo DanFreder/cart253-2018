@@ -1,3 +1,5 @@
+/// a series of minimalist vector graphics patches by Dan Freder
+
 var o1x = 0;
 var o1y = 0;
 var o1z = 0;
