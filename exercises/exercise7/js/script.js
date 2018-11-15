@@ -1,4 +1,5 @@
-/// a series of minimalist vector graphics patches by Dan Freder
+/// a series of minimalist vector graphics by Dan Freder
+/// atm I'm separating the different scenes into different objects
 
 var o1x = 0;
 var o1y = 0;
