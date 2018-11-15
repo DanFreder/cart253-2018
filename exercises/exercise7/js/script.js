@@ -4,28 +4,28 @@ var o1z = 0;
 var edge = 0;
 var numRects = 5;
 var cubes;
-var polySphere;
+var polySpheres;
 var blueRects;
 
 function setup() {
   createCanvas(windowWidth, windowHeight, WEBGL);
-  var o1x = random(0, 1000);
-  var o1y = random(0, 1000);
-  var o1z = random(0, 1000);
+  var o1x = random(0, 10000);
+  var o1y = random(0, 10000);
+  var o1z = random(0, 10000);
 
-  cubes = new Cubes(0,0,300,10);
-  polySphere = new PolySphere(0,0,600,10);
-  blueRects = new BlueRectangles(0,0,5);
+  cubes = new Cubes(0, 0, 350, 10);
+  polySpheres = new PolySphere(0,0,550,0);
+  blueRects = new BlueRectangles(0, 0, 2);
 }
 
 function draw() {
   background(0);
 
-polySphere.update();
-cubes.update();
-blueRects.update();
+//  cubes.update();
+//  blueRects.update();
+  polySpheres.update();
 
-polySphere.display();
-cubes.display();
-blueRects.display();
+//  cubes.display();
+//  blueRects.display();
+  polySpheres.display();
 }
