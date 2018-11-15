@@ -19,7 +19,7 @@ PolySphere.prototype.display = function() {
   stroke(226);
   fill(0, 0, 0, 0);
 
-  translate(this.x, this.y, 100);
+  translate(this.x, this.y, 150);
   rotateX(o1x);
   rotateY(o1y);
   rotateZ(o1z);
@@ -36,6 +36,19 @@ PolySphere.prototype.display = function() {
   rotateY(o1x);
   rotateZ(o1y);
   sphere(this.size, 4, 4);
+
+  translate(10, 10, 10);
+  rotateX(o1x);
+  rotateY(o1x);
+  rotateZ(o1x);
+  sphere(this.size, 4, 4);
+
+  translate(10, 10, 10);
+  rotateX(o1y);
+  rotateY(o1y);
+  rotateZ(o1y);
+  sphere(this.size, 4, 4);
+
   pop();
 
   o1x += .0009;
