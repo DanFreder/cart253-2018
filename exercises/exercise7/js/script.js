@@ -2,7 +2,7 @@ var o1x = 0;
 var o1y = 0;
 var o1z = 0;
 var edge = 0;
-var numRects = 10;
+var rects = 5;
 
 function setup() {
   createCanvas(windowWidth, windowHeight, WEBGL);
@@ -17,9 +17,9 @@ function draw() {
 if (mouseIsPressed) {
   edge = 1;
   ///stylish rectangles
-  for (var i = 0; i < numRects; i++) {
-  var xSize = random(125,200);
-  var ySize = random(75,150);
+  for (var i = 0; i < rects; i++) {
+  var xSize = random(100,200);
+  var ySize = random(75,175);
   push()
   rectMode(CENTER);
   strokeWeight(1);
@@ -71,5 +71,26 @@ else {
   fill(251, 54, 64);
   box(300, 300, 300, 1, 1);
   pop();
+
+/// LOW POLY SPHERE
+  push();
+  translate(0, 0, 0);
+  strokeWeight(1);
+  stroke(226);
+  rotateX(frameCount/PI*5);
+  fill(0,0,0,0);
+  sphere(500, 4, 4);
+  pop();
+
+  // for (var i = 0; i < numRects; i++) {
+//  var xSize = random(100,200);
+//  var ySize = random(75,175);
+//  push()
+//  rectMode(CENTER);
+//  strokeWeight(1);
+  //  stroke(36, 123, 160);
+//  fill(0);
+///  rect(0,0,windowWidth- xSize, windowHeight-ySize);
+///  pop();
 
 }
