@@ -1,40 +1,30 @@
-function BlueRectangles(x, y, numRects) {
-  this.x = x;
-  this.y = y;
-  this.crazy = numRects;
-}
+var numRects = 52;
 
-
-BlueRectangles.prototype.update = function() {
-  //move the Rectangles
-//  this.x += this.vx;
-  //this.y += this.vy;
-  //this.z += this.vz;
+function BlueRectangles() {
 }
 
 BlueRectangles.prototype.display = function() {
-  //Stylish rectangles
-  if (mouseIsPressed) {
-    edge = 0;
     ///stylish rectangles
-    for (var i = 0; i < this.crazy; i++) {
-      var xSize = random(100, 200);
-      var ySize = random(75, 175);
+    xReduction = 150;
+    yReduction = 150;
+
+    noCursor();
+for (var i = 0; i < numRects; i ++) {
+  var x = windowWidth - xReduction;
+  var y = windowHeight - yReduction;
+  constrain(mouseX,0,windowWidth);
+  constrain(mouseY,0,windowHeight);
+  var xc = map(mouseX,0,windowWidth/2,600,windowWidth/2);
+  var yc = map(mouseY,0,windowHeight/2,300,windowHeight/2);
       push()
       rectMode(CENTER);
-      strokeWeight(2);
+      strokeWeight(1);
       stroke(36, 123, 160);
       fill(0);
-      rect(this.x, this.y, windowWidth - xSize, windowHeight - ySize);
+      rect(0,0,x,y);
       pop();
-    }
-  } else {
-    edge = 0;
+      xReduction += 22;
+      yReduction += 9;
+      translate(xc-windowWidth/2,yc-windowHeight/2,0);
   }
-}
-
-BlueRectangles.prototype.reset = function() {
-  //reset the Rectangles?
-  this.x = windowWidth/ 2;
-  this.y = windowHeight / 2;
 }

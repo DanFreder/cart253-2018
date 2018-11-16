@@ -16,19 +16,17 @@ function setup() {
   var o1y = random(0, 10000);
   var o1z = random(0, 10000);
 
-  cubes = new Cubes(0, 0, 350, 10);
+  cubes = new Cubes(0, 0, 500,2);
   polySpheres = new PolySphere(0,0,550,0);
-  blueRects = new BlueRectangles(0, 0, 2);
+  blueRects = new BlueRectangles();
 }
 
 function draw() {
   background(0);
 
-  cubes.update();
-  blueRects.update();
-  polySpheres.update();
 
-  cubes.display();
+
+//  cubes.display();
   blueRects.display();
-  polySpheres.display();
+//  polySpheres.display();
 }

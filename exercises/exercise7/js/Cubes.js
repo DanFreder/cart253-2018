@@ -1,6 +1,5 @@
-function Cubes(x, y, size, speed) {
+function Cubes(x, y, size) {
   this.size = size;
-  this.speed = speed;
   this.x = x;
   this.y = y;
 }
@@ -11,43 +10,42 @@ Cubes.prototype.update = function() {
 
 Cubes.prototype.display = function() {
 
-  ///BLUE CUBE
   o1x += .001;
   o1y += .002;
   o1z += .003;
+strokeWeight(0);
+
+  ///BLUE CUBE
   push();
-  strokeWeight(edge);
   translate(this.x-10,this.y-5, -3);
   stroke(0);
-  rotateX(o1x+this.speed);
-  rotateY(o1y+this.speed);
-  rotateZ(o1z+this.speed);
+  rotateX(o1x);
+  rotateY(o1y);
+  rotateZ(o1z);
   fill(10, 36, 99);
-box(this.size,this.size,this.size, 0, 0);
+  box(this.size,this.size,this.size,10,10);
   pop();
 
   ///GREY CUBE
   push();
   translate(this.x, this.y, 0);
-  strokeWeight(edge);
   stroke(0);
-  rotateX(o1x - this.speed);
-  rotateY(o1y - this.speed);
-  rotateZ(o1z - this.speed);
+  rotateX(o1z);
+  rotateY(o1x);
+  rotateZ(o1y);
   fill(96, 95, 94);
-  box(this.size,this.size,this.size, 0, 0);
+  box(this.size,this.size,this.size,10,10);
   pop();
 
   ///RED CUBE
   push();
   translate(this.x+10, this.y+5, 3);
-  strokeWeight(edge);
   stroke(0);
-  rotateX(o1x + frameCount / 1000);
-  rotateY(o1y + frameCount / 1000);
-  rotateZ(o1z + frameCount / 1000);
+  rotateX(frameCount / 1000);
+  rotateY(frameCount / 1000);
+  rotateZ(frameCount / 1000);
   fill(251, 54, 64);
-box(this.size,this.size,this.size, 0, 0);
+  box(this.size,this.size,this.size,10,10);
   pop();
 }
 
