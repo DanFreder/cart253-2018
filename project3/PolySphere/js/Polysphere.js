@@ -19,19 +19,15 @@ Polysphere.prototype.display = function() {
   rotateY(o1y);
   rotateZ(o1z);
   sphere(this.size,this.poly,this.poly);
-  rotateX(o1y);
-  rotateY(o1z);
-  rotateZ(o1x);
-  sphere(this.size,this.poly,this.poly);
 
 // another sphere that rotates opposite the 1st
-  rotateX(-o1x);
-  rotateY(-o1y);
-  rotateZ(-o1z);
+  rotateX(2*o1x);
+  rotateY(2*o1y);
+  rotateZ(2*o1z);
   sphere(this.size,this.poly,this.poly);
 
   o1x += .001;
   o1y += .001;
-  o1z += .001;
+  o1z += .00;
 
 }
