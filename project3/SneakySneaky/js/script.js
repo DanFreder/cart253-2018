@@ -10,11 +10,12 @@ var x;
 var y;
 var vx;
 var vy;
-var maxSpeed = 3;
+var maxSpeed = 10;
 var tx;
 var ty;
 
 var circle;
+var circle2;
 
 function preload() {}
 
@@ -29,12 +30,15 @@ function setup() {
   canvas.style("left:0");
   canvas.style("z-index:-100");
 
-circle = new Circle(windowWidth/2,windowHeight/2,100);
+circle = new Circle(windowWidth/2-300,windowHeight/2,100);
+circle2 = new Circle(windowWidth/2+300,windowHeight/2,100);
 }
 
 function draw() {
   circle.update();
+  circle2.update();
   circle.display();
+  circle2.display();
 }
 
 function windowResized() {

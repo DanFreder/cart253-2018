@@ -34,12 +34,15 @@ Circle.prototype.update = function() {
 Circle.prototype.display = function() {
 push();
   ellipseMode(CENTER);
-  fill(255, 255, 255, 8);
-  ellipse(this.x+25, this.y, this.size, this.size);
-  ellipse(this.x-25, this.y, this.size, this.size);
-  ellipse(this.x, this.y+25, this.size, this.size);
-  ellipse(this.x, this.y-25, this.size, this.size);
+  fill(255, 255, 255, 5);
+  translate(this.x,this.y);
+  rotate(radians(frameCount));
+  ellipse(25, 0, this.size, this.size);
+  ellipse(-25, 0, this.size, this.size);
+  ellipse(0,25, this.size, this.size);
+  ellipse(0,-25, this.size, this.size);
   pop();
+  translate(0,0);
 }
 
 Circle.prototype.reset = function() {
