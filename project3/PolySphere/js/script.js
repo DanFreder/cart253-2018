@@ -3,7 +3,7 @@
 Low Polygon Spheres
 Dan Freder
 
-rotating cubes create push/pop warp illusions
+large 3D low poly spheres rotated to create complex 2D vectors
 
 ******************/
 
@@ -29,7 +29,7 @@ function setup() {
   var o1y = random(0, 10000);
   var o1z = random(0, 10000);
 
-  polySphere = new Polysphere(0, 0, 500);
+  polySphere = new Polysphere(0, 0, 650);
 }
 
 function draw() {

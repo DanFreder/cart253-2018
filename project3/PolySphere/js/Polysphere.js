@@ -3,49 +3,35 @@ function Polysphere(x, y, size, speed) {
   this.y = y;
   this.size = size;
   this.speed = speed;
+  this.poly = 4;
 }
 
 Polysphere.prototype.display = function() {
-  /// LOW POLY SPHERES
+  //style for our spheres
   push();
-  strokeWeight(1);
+  strokeWeight(2);
   stroke(226);
   fill(0, 0, 0, 0);
 
-  translate(this.x, this.y, 150);
+// rotating spheres
+  translate(this.x, this.y, 0);
   rotateX(o1x);
   rotateY(o1y);
   rotateZ(o1z);
-  sphere(this.size, 4, 4);
-
-  translate(10, 10, 10);
+  sphere(this.size,this.poly,this.poly);
   rotateX(o1y);
   rotateY(o1z);
   rotateZ(o1x);
-  sphere(this.size, 4, 4);
+  sphere(this.size,this.poly,this.poly);
 
-  translate(10, 10, 10);
-  rotateX(o1z);
-  rotateY(o1x);
-  rotateZ(o1y);
-  sphere(this.size, 4, 4);
+// another sphere that rotates opposite the 1st
+  rotateX(-o1x);
+  rotateY(-o1y);
+  rotateZ(-o1z);
+  sphere(this.size,this.poly,this.poly);
 
-  translate(10, 10, 10);
-  rotateX(o1x);
-  rotateY(o1x);
-  rotateZ(o1x);
-  sphere(this.size, 4, 4);
-
-  translate(10, 10, 10);
-  rotateX(o1y);
-  rotateY(o1y);
-  rotateZ(o1y);
-  sphere(this.size, 4, 4);
-
-  pop();
-
-  o1x += .0009;
-  o1y += .0008;
+  o1x += .001;
+  o1y += .001;
   o1z += .001;
 
 }
