@@ -6,8 +6,6 @@ function Circle(x,y,size) {
   tx = random(0, 1000);
   ty = random(0, 1000);
 
-  x = windowWidth / 2;
-  y = windowHeight / 2;
 }
 
 Circle.prototype.update = function() {
@@ -19,13 +17,13 @@ Circle.prototype.update = function() {
 
   if (this.x < 0) {
     this.x += windowWidth;
-  } else if (x > windowWidth) {
+  } else if (this.x > windowWidth) {
     this.x -= windowWidth;
   }
 
   if (this.y < 0) {
     this.y += windowHeight;
-  } else if (y > windowHeight) {
+  } else if (this.y > windowHeight) {
     this.y -= windowHeight;
   }
 
@@ -34,8 +32,14 @@ Circle.prototype.update = function() {
 }
 
 Circle.prototype.display = function() {
+push();
+  ellipseMode(CENTER);
   fill(255, 255, 255, 8);
-  ellipse(this.x, this.y, this.size, this.size);
+  ellipse(this.x+25, this.y, this.size, this.size);
+  ellipse(this.x-25, this.y, this.size, this.size);
+  ellipse(this.x, this.y+25, this.size, this.size);
+  ellipse(this.x, this.y-25, this.size, this.size);
+  pop();
 }
 
 Circle.prototype.reset = function() {
