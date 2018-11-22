@@ -36,7 +36,7 @@ push();
   ellipseMode(CENTER);
   fill(255, 255, 255, 5);
   translate(this.x,this.y);
-  rotate(radians(frameCount));
+  rotate(radians(frameCount*2));
   ellipse(25, 0, this.size, this.size);
   ellipse(-25, 0, this.size, this.size);
   ellipse(0,25, this.size, this.size);

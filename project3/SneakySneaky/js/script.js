@@ -10,7 +10,7 @@ var x;
 var y;
 var vx;
 var vy;
-var maxSpeed = 10;
+var maxSpeed = 15;
 var tx;
 var ty;
 
