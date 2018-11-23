@@ -10,19 +10,23 @@ function Circle(x, y, size) {
 Circle.prototype.update = function() {
   vx = map(noise(tx), 0, 1, -maxSpeed, maxSpeed);
   vy = map(noise(ty), 0, 1, -maxSpeed, maxSpeed);
+
   // volume (0. - 1.)
   var vol = mic.getLevel();
-  var w = map(vol, 0, 1, 0, windowWidth / 4);
+  constrain(vol, 0, 1);
+  var w = map(vol, 0, 1, 0, 50);
+  constrain(w, 0, 50);
 
+//update X position with scaled mic input
   this.x += vx + w;
   this.y += vy;
 
+//screen wrapping
   if (this.x < 0) {
     this.x += windowWidth;
   } else if (this.x > windowWidth) {
     this.x -= windowWidth;
   }
-
   if (this.y < 0) {
     this.y += windowHeight;
   } else if (this.y > windowHeight) {
@@ -31,6 +35,7 @@ Circle.prototype.update = function() {
 
   tx += 0.01;
   ty += 0.01;
+  console.log(w);
 }
 
 Circle.prototype.display = function() {
@@ -50,5 +55,3 @@ Circle.prototype.display = function() {
   pop();
   translate(0, 0);
 }
-
-Circle.prototype.reset = function() {}

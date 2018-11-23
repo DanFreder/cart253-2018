@@ -3,7 +3,7 @@
 Sneaky Tubers
 Dan Freder
 
-3 semi-transparent circle-sets leave trails on the canvas
+semi-transparent circles leave trails on the canvas as they worm around
 mic input triggers faster x axis accelerations
 
 ******************/
@@ -11,13 +11,11 @@ var x;
 var y;
 var vx;
 var vy;
-var maxSpeed = 10;
+var maxSpeed = 3;
 var tx;
 var ty;
 
 var circle;
-var circle2;
-var circle3;
 
 var mic;
 
@@ -36,8 +34,7 @@ function setup() {
 
   mic = new p5.AudioIn();
 
-  circle = new Circle(windowWidth / 2, windowHeight / 2 + 100, 150);
-  circle2 = new Circle(windowWidth / 2, windowHeight / 2 - 100, 150);
+  circle = new Circle(windowWidth / 2, windowHeight / 2, 200);
   mic.start();
 }
 
@@ -45,10 +42,7 @@ function draw() {
 
   //display all the circles
   circle.update();
-  circle2.update();
-
   circle.display();
-  circle2.display();
 }
 
 function windowResized() {
