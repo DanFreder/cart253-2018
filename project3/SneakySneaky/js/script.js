@@ -10,7 +10,7 @@ var x;
 var y;
 var vx;
 var vy;
-var maxSpeed = 8;
+var maxSpeed = 4;
 var tx;
 var ty;
 
@@ -18,6 +18,7 @@ var circle;
 var circle2;
 var circle3;
 var circle4;
+var mic;
 
 function preload() {}
 
@@ -32,23 +33,25 @@ function setup() {
   canvas.style("left:0");
   canvas.style("z-index:-100");
 
-  circle = new Circle(windowWidth / 2 - 160, windowHeight / 2, 100);
-  circle2 = new Circle(windowWidth / 2 + 160, windowHeight / 2, 100);
-  circle3 = new Circle(windowWidth / 2, windowHeight / 2 + 90, 100);
-  circle4 = new Circle(windowWidth / 2, windowHeight / 2 - 90, 100);
+  mic = new p5.AudioIn();
+
+  circle = new Circle(windowWidth / 2, windowHeight / 2 + 150, 100);
+  circle2 = new Circle(windowWidth / 2, windowHeight / 2, 100);
+  circle3 = new Circle(windowWidth / 2, windowHeight / 2 - 150,100);
+mic.start();
 }
 
 function draw() {
+
   //display all the circles
   circle.update();
   circle2.update();
-  circle3.update();
-  circle4.update();
+ circle3.update();
+
 
   circle.display();
   circle2.display();
   circle3.display();
-  circle4.display();
 }
 
 function windowResized() {

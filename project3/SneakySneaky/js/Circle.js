@@ -11,8 +11,11 @@ function Circle(x, y, size) {
 Circle.prototype.update = function() {
   vx = map(noise(tx), 0, 1, -maxSpeed, maxSpeed);
   vy = map(noise(ty), 0, 1, -maxSpeed, maxSpeed);
+  // volume (0. - 1.)
+  var vol = mic.getLevel();
+  var w = map(vol, 0, 1, 0,windowWidth/4);
 
-  this.x += vx;
+  this.x += vx + w;
   this.y += vy;
 
   if (this.x < 0) {

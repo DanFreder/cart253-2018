@@ -29,7 +29,7 @@ function setup() {
   var o1y = random(0, 10000);
   var o1z = random(0, 10000);
 
-  cubes = new Cubes(0, 0, 500);
+  cubes = new Cubes(0, 0, 550);
 }
 
 function draw() {

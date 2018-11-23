@@ -3,7 +3,8 @@
 Low Polygon Spheres
 Dan Freder
 
-large 3D low poly spheres rotated to create complex 2D vectors
+large rotating spheres seen from inside-out
+move around with the arrow keys, cancel background clearing with Mousepress
 
 ******************/
 
@@ -11,6 +12,8 @@ var o1x = 0;
 var o1y = 0;
 var o1z = 0;
 var polySphere;
+var pan = 0;
+var tilt = 0;
 
 function preload() {}
 
@@ -25,9 +28,9 @@ function setup() {
   canvas.style("z-index:-100");
   background(0);
 
-  var o1x = random(0, 10000);
-  var o1y = random(0, 10000);
-  var o1z = random(0, 10000);
+  var o1x = random(1);
+  var o1y = random(1);
+  var o1z = random(1);
 
 //create Polyspheres (Xposition,Yposition,Size)
 //Size is big so we are inside the spheres
@@ -35,10 +38,32 @@ function setup() {
 }
 
 function draw() {
-  background(0);
-  polySphere.display();
+
+//Camera controls
+  camera(0, 0, (height/2.0) / tan(PI*30.0 / 180.0),pan,tilt, 0, 0, 1, 0);
+if (keyIsDown(LEFT_ARROW)) {
+  pan -= 10;
+}
+else if (keyIsDown(RIGHT_ARROW)) {
+  pan += 10;
+}
+if (keyIsDown(UP_ARROW)) {
+  tilt -= 10;
+}
+else if (keyIsDown(DOWN_ARROW)) {
+  tilt += 10;
 }
 
+//Cancel background clearing on mousepress
+  if (mouseIsPressed) {
+    polySphere.display();
+  }
+  else {
+  background(0);
+  polySphere.display();
+
+}
+}
 function windowResized() {
   // resize our canvas to the new window dimensions
   resizeCanvas(windowWidth, windowHeight);

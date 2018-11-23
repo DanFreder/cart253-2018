@@ -8,7 +8,7 @@ function Polysphere(x, y, size) {
 Polysphere.prototype.display = function() {
   //style for our spheres
   push();
-  strokeWeight(2);
+  strokeWeight(1);
   stroke(226);
   fill(0, 0, 0, 0);
 
@@ -19,9 +19,14 @@ Polysphere.prototype.display = function() {
   rotateZ(o1z);
   sphere(this.size,this.poly,this.poly);
 
-// another sphere that rotates opposite the 1st
+// another 2 spheres that rotate partially opposite the 1st
   rotateX(-o1x);
   rotateY(o1y);
+  rotateZ(o1z);
+  sphere(this.size,this.poly,this.poly);
+
+  rotateX(o1x);
+  rotateY(-o1y);
   rotateZ(o1z);
   sphere(this.size,this.poly,this.poly);
 
