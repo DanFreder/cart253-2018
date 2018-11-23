@@ -35,7 +35,6 @@ Circle.prototype.update = function() {
 
   tx += 0.01;
   ty += 0.01;
-  console.log(w);
 }
 
 Circle.prototype.display = function() {

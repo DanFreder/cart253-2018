@@ -26,15 +26,16 @@ function draw() {
   translate(windowWidth / 2, windowHeight / 2);
   xReduction = 0;
   yReduction = 0;
-  var numRects = 51;
+  var numRects = 40;
 
   for (var i = 0; i < numRects; i++) {
     var x = windowWidth - xReduction;
     var y = windowHeight - yReduction;
-    constrain(mouseX, 0, windowWidth);
-    constrain(mouseY, 0, windowHeight);
-    var xc = map(mouseX, 0, windowWidth / 2, 600, windowWidth / 2);
-    var yc = map(mouseY, 0, windowHeight / 2, 300, windowHeight / 2);
+
+    var xc = constrain(mouseX, 0., windowWidth);
+    var yc = constrain(mouseY, 0., windowHeight);
+
+
     push()
     rectMode(CENTER);
     strokeWeight(1);
@@ -44,9 +45,10 @@ function draw() {
     pop();
     xReduction += 25;
     yReduction += 10;
-    translate(xc - windowWidth / 2, yc - windowHeight / 2, 0);
-    // windowResized() is called by p5 whenever the window is resized!
-  }
+    translate(xc - windowWidth / 2, yc - windowHeight / 2);
+    y = constrain(x,0,windowWidth/2);
+    x = constrain(y,0,windowHeight/2);
+}
 }
   function windowResized() {
     // resize our canvas to the new window dimensions
