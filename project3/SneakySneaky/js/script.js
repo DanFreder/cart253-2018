@@ -36,7 +36,6 @@ function setup() {
   circle2 = new Circle(windowWidth / 2 + 160, windowHeight / 2, 100);
   circle3 = new Circle(windowWidth / 2, windowHeight / 2 + 90, 100);
   circle4 = new Circle(windowWidth / 2, windowHeight / 2 - 90, 100);
-
 }
 
 function draw() {
