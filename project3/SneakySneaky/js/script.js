@@ -36,9 +36,8 @@ function setup() {
 
   mic = new p5.AudioIn();
 
-  circle = new Circle(windowWidth / 2, windowHeight / 2 + 150, 150);
-  circle2 = new Circle(windowWidth / 2, windowHeight / 2, 150);
-  circle3 = new Circle(windowWidth / 2, windowHeight / 2 - 150, 150);
+  circle = new Circle(windowWidth / 2, windowHeight / 2 + 100, 150);
+  circle2 = new Circle(windowWidth / 2, windowHeight / 2 - 100, 150);
   mic.start();
 }
 
@@ -47,11 +46,9 @@ function draw() {
   //display all the circles
   circle.update();
   circle2.update();
-  circle3.update();
 
   circle.display();
   circle2.display();
-  circle3.display();
 }
 
 function windowResized() {

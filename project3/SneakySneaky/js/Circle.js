@@ -39,13 +39,13 @@ Circle.prototype.display = function() {
   ellipseMode(CENTER);
   translate(this.x, this.y);
   rotate(radians(frameCount));
-  stroke(46,134,171);
+  stroke(239,71,111);
   ellipse(25, 0, this.size, this.size);
-    stroke(162,59,114);
+    stroke(17,138,178);
   ellipse(-25, 0, this.size, this.size);
-  stroke(241,143,1);
+  stroke(255,209,102);
   ellipse(0, 25, this.size, this.size);
-  stroke(199,62,29);
+  stroke(6,214,160);
   ellipse(0, -25, this.size, this.size);
   pop();
   translate(0, 0);
