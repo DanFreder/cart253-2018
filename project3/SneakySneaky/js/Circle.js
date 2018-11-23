@@ -1,4 +1,4 @@
-function Circle(x,y,size) {
+function Circle(x, y, size) {
   this.size = size;
   this.x = x;
   this.y = y;
@@ -32,18 +32,17 @@ Circle.prototype.update = function() {
 }
 
 Circle.prototype.display = function() {
-push();
+  push();
   ellipseMode(CENTER);
   fill(255, 255, 255, 5);
-  translate(this.x,this.y);
-  rotate(radians(frameCount*2));
+  translate(this.x, this.y);
+  rotate(radians(frameCount * 2));
   ellipse(25, 0, this.size, this.size);
   ellipse(-25, 0, this.size, this.size);
-  ellipse(0,25, this.size, this.size);
-  ellipse(0,-25, this.size, this.size);
+  ellipse(0, 25, this.size, this.size);
+  ellipse(0, -25, this.size, this.size);
   pop();
-  translate(0,0);
+  translate(0, 0);
 }
 
-Circle.prototype.reset = function() {
-}
+Circle.prototype.reset = function() {}

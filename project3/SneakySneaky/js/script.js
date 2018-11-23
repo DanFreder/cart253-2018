@@ -32,25 +32,28 @@ function setup() {
   canvas.style("left:0");
   canvas.style("z-index:-100");
 
-circle = new Circle(windowWidth/2-160,windowHeight/2,100);
-circle2 = new Circle(windowWidth/2+160,windowHeight/2,100);
-circle3 = new Circle(windowWidth/2,windowHeight/2+90,100);
-circle4 = new Circle(windowWidth/2,windowHeight/2-90,100);
+  circle = new Circle(windowWidth / 2 - 160, windowHeight / 2, 100);
+  circle2 = new Circle(windowWidth / 2 + 160, windowHeight / 2, 100);
+  circle3 = new Circle(windowWidth / 2, windowHeight / 2 + 90, 100);
+  circle4 = new Circle(windowWidth / 2, windowHeight / 2 - 90, 100);
 
 }
 
 function draw() {
+  //display all the circles
   circle.update();
   circle2.update();
   circle3.update();
   circle4.update();
+
   circle.display();
-  circle3.display();
   circle2.display();
+  circle3.display();
   circle4.display();
 }
 
 function windowResized() {
   // resize our canvas to the new window dimensions
   resizeCanvas(windowWidth, windowHeight);
+  background(100);
 }
