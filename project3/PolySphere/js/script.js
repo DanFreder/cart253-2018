@@ -29,7 +29,9 @@ function setup() {
   var o1y = random(0, 10000);
   var o1z = random(0, 10000);
 
-  polySphere = new Polysphere(0, 0, 650);
+//create Polyspheres (Xposition,Yposition,Size)
+//Size is big so we are inside the spheres
+  polySphere = new Polysphere(0, 0, 700);
 }
 
 function draw() {
