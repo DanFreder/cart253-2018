@@ -35,21 +35,20 @@ Circle.prototype.update = function() {
 
 Circle.prototype.display = function() {
   push();
-  fill(251,251,251,1);
+  fill(251, 251, 251, 1);
   ellipseMode(CENTER);
   translate(this.x, this.y);
   rotate(radians(frameCount));
-  stroke(239,71,111);
+  stroke(239, 71, 111);
   ellipse(25, 0, this.size, this.size);
-    stroke(17,138,178);
+  stroke(17, 138, 178);
   ellipse(-25, 0, this.size, this.size);
-  stroke(255,209,102);
+  stroke(255, 209, 102);
   ellipse(0, 25, this.size, this.size);
-  stroke(6,214,160);
+  stroke(6, 214, 160);
   ellipse(0, -25, this.size, this.size);
   pop();
   translate(0, 0);
 }
 
-Circle.prototype.reset = function() {
-}
+Circle.prototype.reset = function() {}
