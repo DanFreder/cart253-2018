@@ -23,30 +23,47 @@ function draw() {
   translate(windowWidth / 2, windowHeight / 2);
   xReduction = 0;
   yReduction = 0;
+
   var numRects = 40;
 
   y = constrain(x,0,windowWidth/2);
   x = constrain(y,0,windowHeight/2);
 
+  if (mouseIsPressed) {
+    drag = 0;
+  }
+  else {
+    drag = 255;
+  }
+
   for (var i = 0; i < numRects; i++) {
     var x = windowWidth - xReduction;
     var y = windowHeight - yReduction;
-    var xc = map(mouseX,0,windowWidth,windowWidth/2 - 15., windowWidth/2 + 15.);
+    var xc = map(mouseX,0,windowWidth,windowWidth/2 - 20., windowWidth/2 + 20.);
     var yc = map(mouseY,0,windowHeight,windowHeight/2 - 10.,windowHeight/2 + 10.);
 
     push()
     rectMode(CENTER);
     strokeWeight(1);
-    stroke(36, 123, 160);
-    fill(0, 0, 0, 255);
+    stroke(251, 54, 64);
+    fill(0, 0, 0, drag);
     rect(0, 0, x, y);
     pop();
+
+    push();
+    rectMode(CENTER);
+    strokeWeight(1);
+    stroke(36, 123, 160);
+    fill(0, 0, 0, drag);
+    rect(0,0,x-16,y-8);
+    pop();
+
     xReduction += 32;
     yReduction += 16;
     translate(xc - windowWidth / 2, yc - windowHeight / 2);
+}
+}
 
-}
-}
   function windowResized() {
     // resize our canvas to the new window dimensions
     resizeCanvas(windowWidth, windowHeight);
