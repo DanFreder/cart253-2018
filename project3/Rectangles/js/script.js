@@ -25,14 +25,14 @@ function draw() {
   yReduction = 0;
   var numRects = 40;
 
+  y = constrain(x,0,windowWidth/2);
+  x = constrain(y,0,windowHeight/2);
+
   for (var i = 0; i < numRects; i++) {
     var x = windowWidth - xReduction;
     var y = windowHeight - yReduction;
-
-    var xc = constrain(mouseX, 0., windowWidth);
-    var yc = constrain(mouseY, 0., windowHeight);
-    map(xc,0,windowWidth,windowWidth/2 - 100, windowWidth/2 + 100);
-    map(yc,0,windowHeight,windowHeight/2 + 100, windowHeight/2 + 100);
+    var xc = map(mouseX,0,windowWidth,windowWidth/2 - 15., windowWidth/2 + 15.);
+    var yc = map(mouseY,0,windowHeight,windowHeight/2 - 10.,windowHeight/2 + 10.);
 
     push()
     rectMode(CENTER);
@@ -41,11 +41,10 @@ function draw() {
     fill(0, 0, 0, 255);
     rect(0, 0, x, y);
     pop();
-    xReduction += 25;
-    yReduction += 10;
+    xReduction += 32;
+    yReduction += 16;
     translate(xc - windowWidth / 2, yc - windowHeight / 2);
-    y = constrain(x,0,windowWidth/2);
-    x = constrain(y,0,windowHeight/2);
+
 }
 }
   function windowResized() {
