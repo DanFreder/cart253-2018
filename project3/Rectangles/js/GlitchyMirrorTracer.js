@@ -1,7 +1,10 @@
 /*****************
+
 Rectangles
 Dan Freder
+
 repeating rectangles scale with cursor position
+
 ******************/
 
 function preload() {}
@@ -19,37 +22,45 @@ function setup() {
 }
 
 function draw() {
-  //  noCursor();
-  translate(windowWidth / 2, windowHeight / 2);
+
   xReduction = 0;
   yReduction = 0;
+
   var numRects = 40;
 
-  for (var i = 0; i < numRects; i++) {
-    var x = windowWidth - xReduction;
-    var y = windowHeight - yReduction;
+  translate(windowWidth/2, windowHeight/2);
 
-    var xc = constrain(mouseX, 0., windowWidth);
-    var yc = constrain(mouseY, 0., windowHeight);
-    map(xc,0,windowWidth,windowWidth/2 - 100, windowWidth/2 + 100);
-    map(yc,0,windowHeight,windowHeight/2 + 100, windowHeight/2 + 100);
+  for (var i = 0; i < numRects; i++) {
+
+    var x = windowWidth/2 - xReduction;
+    var y = windowHeight/2 - yReduction;
+
+    constrain(mouseX,0,windowWidth);
+    constrain(mouseY,0,windowHeight);
+
+    var xc = mouseX - windowWidth/2;
+    var yc = mouseY - windowHeight/2;
+
 
     push()
     rectMode(CENTER);
     strokeWeight(1);
     stroke(36, 123, 160);
     fill(0, 0, 0, 255);
-    rect(0, 0, x, y);
+    rect(x, y,0,0);
     pop();
-    xReduction += 25;
+
+    xReduction += 20;
     yReduction += 10;
+
+
+
     translate(xc - windowWidth / 2, yc - windowHeight / 2);
-    y = constrain(x,0,windowWidth/2);
-    x = constrain(y,0,windowHeight/2);
+
 }
 }
   function windowResized() {
     // resize our canvas to the new window dimensions
     resizeCanvas(windowWidth, windowHeight);
     background(0);
-}
+  }
