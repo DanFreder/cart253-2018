@@ -14,8 +14,8 @@ Circle.prototype.update = function() {
   // volume (0. - 1.)
   var vol = mic.getLevel();
   constrain(vol, 0, 1);
-  var w = map(vol, 0, 1, 0, 50);
-  constrain(w, 0, 50);
+  var w = map(vol, 0, 1, 0, 60);
+  constrain(w, 0, 60);
 
 //update X position with scaled mic input
   this.x += vx + w;
