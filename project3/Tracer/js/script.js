@@ -21,40 +21,41 @@ function setup() {
   background(0);
 }
 
-var numLines = 100;
+var numLines = 11;
 
 function draw() {
   background(0);
 
   push();
   for (var i = 0; i < numLines; i++) {
-    noFill();
-    stroke(255);
-    strokeWeight(1);
+//fill(251,54,64,1);
+noFill();
+    stroke(251,54,64,255);
+    strokeWeight(2);
     //  bezier(x1, y1, x2, y2, x3, y3, x4, y4)
-    bezier(0, windowHeight / 2+300,
-      windowWidth / 2 + mouseX/2, windowHeight / 2 - mouseY,
+    bezier(0, windowHeight/2,
+      windowWidth/2 + mouseX/2, windowHeight / 2 - mouseY,
       mouseX/2, mouseY/2,
-      windowWidth+mouseX/2, windowHeight / 2 + mouseY/2);
-    translate(0, 10, 0);
+      windowWidth, windowHeight - mouseY/2);
+    translate(0, 20, 0);
   }
   pop();
 
+//Lines on upper half of frame
   push();
   for (var i = 0; i < numLines; i++) {
-    noFill();
-    stroke(255);
-    strokeWeight(1);
-    //bezier(x1, y1, x2, y2, x3, y3, x4, y4)
-    bezier(0, windowHeight / 2+300,
-      windowWidth / 2 + mouseX/2, windowHeight / 2 - mouseY,
+  // fill(36,123,160,1);
+noFill();
+    stroke(36,123,160,255);
+    strokeWeight(2);
+    //  bezier(x1, y1, x2, y2, x3, y3, x4, y4)
+    bezier(0, windowHeight/2,
+      windowWidth/2 + mouseX/2, windowHeight / 2 + mouseY,
       mouseX/2, mouseY/2,
-      windowWidth+mouseX/2, windowHeight / 2 + mouseY/2);
-    translate(0, -10, 0);
+      windowWidth, windowHeight + mouseY/2);
+    translate(0, -20, 0);
   }
   pop();
-
-
 }
 
 function windowResized() {
