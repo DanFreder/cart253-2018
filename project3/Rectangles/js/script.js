@@ -19,7 +19,7 @@ function setup() {
 }
 
 function draw() {
-  //  noCursor();
+  noCursor();
   translate(windowWidth / 2, windowHeight / 2);
   xReduction = 0;
   yReduction = 0;

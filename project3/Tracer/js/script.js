@@ -3,10 +3,9 @@
 Tracer
 Dan Freder
 
-Use the cursor to trace points delineating a vanishing point
+Squiggly Giggly Goop
 
 ******************/
-var cw = 0;
 
 function preload() {}
 
@@ -22,47 +21,44 @@ function setup() {
   background(0);
 }
 
+var numLines = 100;
+
 function draw() {
+  background(0);
 
-  xReduction = 0;
-  yReduction = 0;
-  var numRects = 30;
-
-  mouseX = map(mouseX,0,windowWidth,windowWidth/2-20,windowWidth/2+20);
-  mouseY = map(mouseY,0,windowHeight,windowHeight/2-10,windowHeight/2+10);
-
-  var xc = mouseX - windowWidth/2;
-  var yc = mouseY - windowHeight/2;
-
-//  var xc = map(xc,0,mouseX-windowWidth/2,windowWidth/2-100,windowWidth/2+100);
-//  var yc = map(yc,0,mouseY-windowHeight/2,windowHeight/2-100,windowHeight/2+100);
-
-  translate(windowWidth/2, windowHeight/2);
-
-  for (var i = 0; i < numRects; i++) {
-
-    var x = windowWidth/2 - xReduction;
-    var y = windowHeight/2 - yReduction;
-
-    push()
-    rectMode(CENTER);
-    strokeWeight(1);
+  push();
+  for (var i = 0; i < numLines; i++) {
+    noFill();
     stroke(255);
-    fill(0, 0, 0,255);
-    ellipse(0,0,x,y);
-    pop();
-
-    xReduction += 16;
-    yReduction += 9;
-
-    translate(xc,yc,cw);
-
-    cw++;
-
-}
-}
-  function windowResized() {
-    // resize our canvas to the new window dimensions
-    resizeCanvas(windowWidth, windowHeight);
-    background(0);
+    strokeWeight(1);
+    //  bezier(x1, y1, x2, y2, x3, y3, x4, y4)
+    bezier(0, windowHeight / 2+300,
+      windowWidth / 2 + mouseX/2, windowHeight / 2 - mouseY,
+      mouseX/2, mouseY/2,
+      windowWidth+mouseX/2, windowHeight / 2 + mouseY/2);
+    translate(0, 10, 0);
   }
+  pop();
+
+  push();
+  for (var i = 0; i < numLines; i++) {
+    noFill();
+    stroke(255);
+    strokeWeight(1);
+    //bezier(x1, y1, x2, y2, x3, y3, x4, y4)
+    bezier(0, windowHeight / 2+300,
+      windowWidth / 2 + mouseX/2, windowHeight / 2 - mouseY,
+      mouseX/2, mouseY/2,
+      windowWidth+mouseX/2, windowHeight / 2 + mouseY/2);
+    translate(0, -10, 0);
+  }
+  pop();
+
+
+}
+
+function windowResized() {
+  // resize our canvas to the new window dimensions
+  resizeCanvas(windowWidth, windowHeight);
+  background(0);
+}
