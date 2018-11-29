@@ -40,18 +40,21 @@ function setup() {
 function draw() {
 
 //Camera controls
-  camera(0, 0, (height/2.0) / tan(PI*30.0 / 180.0),pan,tilt, 0, 0, 1, 0);
+
+rotateX(tilt);
+rotateY(pan);
+
 if (keyIsDown(LEFT_ARROW)) {
-  pan -= 10;
+  pan -= 0.02;
 }
 else if (keyIsDown(RIGHT_ARROW)) {
-  pan += 10;
+  pan += 0.02;
 }
 if (keyIsDown(UP_ARROW)) {
-  tilt -= 10;
+  tilt += 0.02;
 }
 else if (keyIsDown(DOWN_ARROW)) {
-  tilt += 10;
+  tilt -= 0.02;
 }
 
 //Cancel background clearing on mousepress
@@ -61,9 +64,9 @@ else if (keyIsDown(DOWN_ARROW)) {
   else {
   background(0);
   polySphere.display();
+}
+}
 
-}
-}
 function windowResized() {
   // resize our canvas to the new window dimensions
   resizeCanvas(windowWidth, windowHeight);

@@ -29,10 +29,9 @@ Polysphere.prototype.display = function() {
   rotateY(-o1y);
   rotateZ(o1z);
   sphere(this.size,this.poly,this.poly);
+  pop();
 
   o1x += .001;
   o1y += .002;
   o1z += .003;
-}
-  Polysphere.prototype.reset = function() {
 }
