@@ -36,6 +36,19 @@ function draw() {
     drag = 255;
   }
 
+  if (keyIsDown(LEFT_ARROW)) {
+    mouseX -= 5;
+  }
+  else if (keyIsDown(RIGHT_ARROW)) {
+    mouseX += 5;
+  }
+  if (keyIsDown(UP_ARROW)) {
+    mouseY -= 5;
+  }
+  else if (keyIsDown(DOWN_ARROW)) {
+    mouseY += 5;
+  }
+
   for (var i = 0; i < numRects; i++) {
     var x = windowWidth - xReduction;
     var y = windowHeight - yReduction;
