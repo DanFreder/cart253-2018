@@ -4,7 +4,7 @@ Low Polygon Spheres
 Dan Freder
 
 large rotating spheres seen from inside-out
-move around with the arrow keys, cancel background clearing with Mousepress
+move around with the arrow keys, cancel background clear w/click or space
 
 ******************/
 
@@ -32,15 +32,14 @@ function setup() {
   var o1y = random(1);
   var o1z = random(1);
 
-//create Polyspheres (Xposition,Yposition,Size)
+//create Polysphere (Xposition,Yposition,Size)
 //Size is big so we are inside the spheres
-  polySphere = new Polysphere(0, 0, 700);
+  polySphere = new Polysphere(0, 0, 900);
 }
 
 function draw() {
 
 //Camera controls
-
 rotateX(tilt);
 rotateY(pan);
 
@@ -58,7 +57,7 @@ else if (keyIsDown(DOWN_ARROW)) {
 }
 
 //Cancel background clearing on mousepress
-  if (mouseIsPressed) {
+if (mouseIsPressed || keyIsDown(32)) {
     polySphere.display();
   }
   else {
