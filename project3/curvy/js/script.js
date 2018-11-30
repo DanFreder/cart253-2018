@@ -1,7 +1,8 @@
 /*****************
-Tracer
+curvy
 Dan Freder
-Squiggly Giggly Goop
+
+Bezier Curves follow mouse position
 ******************/
 
 var click = 0;
@@ -20,9 +21,10 @@ function setup() {
   background(0);
 }
 
-var numLines = 100;
+var numLines = 30;
 
 function draw() {
+  noCursor();
   background(30);
   if (mouseIsPressed || keyIsDown(32))  {
     click = 50;
@@ -39,7 +41,7 @@ fill(0,139,248,click);
     stroke(0,139,248,255);
     strokeWeight(2);
     //  bezier(x1, y1, x2, y2, x3, y3, x4, y4)
-    bezier(-300, windowHeight/2-300,
+    bezier(-800, windowHeight/2-600,
       windowWidth/2 + mouseX, windowHeight / 2 - mouseY,
       windowWidth/2 + mouseX, windowHeight / 2 - mouseY,
       windowWidth+300, windowHeight+300);
@@ -54,7 +56,7 @@ fill(0,139,248,click);
     stroke(220,0,115,255);
     strokeWeight(2);
     //  bezier(x1, y1, x2, y2, x3, y3, x4, y4)
-    bezier(-300, windowHeight/2+300,
+    bezier(-800, windowHeight/2+600,
       windowWidth/2 + mouseX, windowHeight / 2 + mouseY,
       windowWidth/2 + mouseX, windowHeight / 2 + mouseY,
       windowWidth+300, windowHeight-300);
