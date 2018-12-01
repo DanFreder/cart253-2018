@@ -29,7 +29,7 @@ function draw() {
   y = constrain(x,0,windowWidth/2);
   x = constrain(y,0,windowHeight/2);
 
-  if (mouseIsPressed) {
+  if (mouseIsPressed || keyIsDown(32))  {
     drag = 0;
   }
   else {
