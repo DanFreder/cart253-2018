@@ -40,6 +40,6 @@ Triangle.prototype.display = function() {
     cX--;
     oX *= -1;
     oY *= -1;
-    bY++;
+    bY--;
   }
 }

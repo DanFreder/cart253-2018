@@ -26,7 +26,7 @@ function setup() {
   canvas.style("left:0");
   canvas.style("z-index:-100");
 
-tri = new Triangle();
+  tri = new Triangle();
 
 }
 
