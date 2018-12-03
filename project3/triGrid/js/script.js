@@ -1,21 +1,23 @@
 /*****************
 
-Tri-city
+triGrid
 Dan Freder
 
-An array of triangles rotate + leave trails on the canvas
+a grid of triangles...someday
 
 ******************/
 
-var numTriangles = 50;
-var triangles = [];
-
-var aX = -400;
-var aY = -344;
+var numTriangles = 100;
+var tris = [];
+var aX = -100;
+var aY = -57.7533333333;
 var bX = 0;
-var bY = 348.84;
-var cX = 400;
-var cY = -344;
+var bY = 115.5066666666;
+var cX = 100;
+var cY = -57.7533333333;
+var offsetX = 0;
+var offsetY = 0;
+var noiseBase = 0;
 
 function setup() {
   // Create a canvas the size of the window
@@ -28,27 +30,23 @@ function setup() {
   canvas.style("z-index:-100");
 
 for (var i = 0; i < numTriangles; i++) {
-
-  if (i % 2 === 1) {
-  triangles[i] = new Triangle(100*i,-10*i,random(-1,1)*1.5);
-}
-  else {
-    triangles[i] = new Triangle(-100*i,10*i,random(-1,1)*1.5);
-  }
-}
-background(0);
+    tris[i] = new Triangle(0,0,1);
+    }
 }
 
 function draw() {
-translate(windowWidth/2,windowHeight/2);
-for (var i = 0; i < numTriangles; i++) {
-triangles[i].update();
-triangles[i].display();
+background(255);
+translate(0,windowHeight/2);
+noiseBase += .001;
+for (var i = 0; i < tris.length; i++) {
+translate(20,0);
+tris[i].update();
+tris[i].display();
 }
 }
 
 function windowResized() {
   // resize our canvas to the new window dimensions
   resizeCanvas(windowWidth, windowHeight);
-  background(0);
+  background(255);
 }

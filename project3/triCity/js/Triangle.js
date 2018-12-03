@@ -45,4 +45,4 @@ Triangle.prototype.display = function() {
           this.offsetX + bX, this.offsetY + bY,
           this.offsetX + cX, this.offsetY+ cY);
   pop();
-  }
+}
