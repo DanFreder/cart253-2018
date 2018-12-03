@@ -1,26 +1,26 @@
-function Triangle(offsetX,offsetY,direction) {
+function Triangle(xLocation,yLocation,spin) {
   this.offsetX = offsetX;
   this.offsetY = offsetY;
-  this.direction = direction;
-  // -1 or 1 for direction
+  this.spin = spin;
+
 }
 
 Triangle.prototype.update = function() {
   //find center of each triangle
-  oX = ((aX + bX + cX) / 3);
-  oY = ((aY + bY + cY) / 3);
+  oX = ((aX + bX + cX + this.offsetX) / 3);
+  oY = ((aY + bY + cY + this.offsetY) / 3);
 }
 
 Triangle.prototype.display = function() {
   push();
-  noFill();
-  stroke(0);
-  strokeWeight(1);
+  fill(112,193,179,50);
+  stroke(255,35,94,255);
+  strokeWeight(3);
   translate(oX,oY);
-  rotate(radians(frameCount) * this.direction);
-  triangle(aX + this.offsetX,aY + this.offsetY,
-    bX + this.offsetX,bY + this.offsetY,
-    cX + this.offsetX,cY + this.offsetY);
-    translate(windowWidth/2,windowHeight/2);
+  rotate(radians(frameCount/10) + this.spin);
+  triangle(aX,aY,
+    bX,bY,
+    cX,cY);
+  //translate(windowWidth/2,windowHeight/2);
   pop();
 }

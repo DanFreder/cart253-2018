@@ -9,15 +9,14 @@ a grid of triangles...someday
 
 var numTriangles = 100;
 var tris = [];
-var aX = -100;
-var aY = -57.7533333333;
+var aX = -500;
+var aY = -288.766666666;
 var bX = 0;
-var bY = 115.5066666666;
-var cX = 100;
-var cY = -57.7533333333;
-var offsetX = 0;
-var offsetY = 0;
-var noiseBase = 0;
+var bY = 577.5333333333;
+var cX = 500;
+var cY = -288.766666666;
+this.offsetX = 0;
+this.offsetY = 0;
 
 function setup() {
   // Create a canvas the size of the window
@@ -30,18 +29,18 @@ function setup() {
   canvas.style("z-index:-100");
 
 for (var i = 0; i < numTriangles; i++) {
-    tris[i] = new Triangle(0,0,1);
+    tris[i] = new Triangle(0,0,i * 0.04);
     }
 }
 
 function draw() {
-background(255);
-translate(0,windowHeight/2);
-noiseBase += .001;
+background(245,255,201);
+//translate(windowWidth/2,windowHeight/2);
 for (var i = 0; i < tris.length; i++) {
-translate(20,0);
-tris[i].update();
-tris[i].display();
+  tris[i].update();
+  tris[i].spin += .008;
+  tris[i].display();
+  translate(mouseX/8,mouseY/6);
 }
 }
 
