@@ -1,8 +1,7 @@
-function Triangle(xLocation,yLocation,spin) {
+function Triangle(xLocation, yLocation, spin) {
   this.offsetX = offsetX;
   this.offsetY = offsetY;
   this.spin = spin;
-
 }
 
 Triangle.prototype.update = function() {
@@ -11,16 +10,16 @@ Triangle.prototype.update = function() {
   oY = ((aY + bY + cY + this.offsetY) / 3);
 }
 
-Triangle.prototype.display = function() {
+Triangle.prototype.display = function(transparency) {
   push();
-  fill(112,193,179,50);
-  stroke(255,35,94,255);
-  strokeWeight(3);
-  translate(oX,oY);
-  rotate(radians(frameCount/10) + this.spin);
-  triangle(aX,aY,
-    bX,bY,
-    cX,cY);
+  fill(36, 123, 160, transparency);
+  stroke(255, 35, 94, 255);
+  strokeWeight(4);
+  translate(oX, oY);
+  rotate(radians(frameCount / 20) + this.spin);
+  triangle(aX, aY,
+    bX, bY,
+    cX, cY);
   //translate(windowWidth/2,windowHeight/2);
   pop();
 }

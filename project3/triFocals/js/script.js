@@ -1,13 +1,14 @@
 /*****************
 
-triGrid
+triFocals
 Dan Freder
 
-a grid of triangles...someday
+An array of rotating triangles.
+Move your mouse to translate cross-canvas.
 
 ******************/
 
-var numTriangles = 100;
+var numTriangles = 30;
 var tris = [];
 var aX = -500;
 var aY = -288.766666666;
@@ -28,20 +29,24 @@ function setup() {
   canvas.style("left:0");
   canvas.style("z-index:-100");
 
-for (var i = 0; i < numTriangles; i++) {
-    tris[i] = new Triangle(0,0,i * 0.04);
-    }
+  for (var i = 0; i < numTriangles; i++) {
+    tris[i] = new Triangle(0, 0, i * 0.04);
+  }
 }
 
 function draw() {
-background(245,255,201);
-//translate(windowWidth/2,windowHeight/2);
-for (var i = 0; i < tris.length; i++) {
-  tris[i].update();
-  tris[i].spin += .008;
-  tris[i].display();
-  translate(mouseX/8,mouseY/6);
+if (mouseIsPressed === true) {
 }
+else {
+  background(245, 255, 201);
+}
+  //translate(windowWidth/2,windowHeight/2);
+  for (var i = 0; i < tris.length; i++) {
+    tris[i].update();
+    tris[i].spin += .008;
+    tris[i].display(275 - (i * 5));
+    translate(mouseX / 8, mouseY / 6);
+  }
 }
 
 function windowResized() {
